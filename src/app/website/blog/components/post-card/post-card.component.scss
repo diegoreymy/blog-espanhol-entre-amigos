@@ -1,0 +1,32 @@
+.post-card {
+  width: 100%;
+  position: relative;
+  background-color: #000;
+}
+
+.post-card-image {
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.75s ease;
+}
+
+.post-card-image:hover {
+  opacity: 0.15;
+  transition: opacity 0.75s ease;
+}
+
+.post-card-link::before {
+  content: url("/assets/images/icons/logo-icon.png");
+  position: absolute;
+  opacity: 0;
+  width: 100px;
+  height: 100px;
+  left: 50%;
+  top: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+}
+
+.post-card-link:hover:before {
+  opacity: 1;
+}

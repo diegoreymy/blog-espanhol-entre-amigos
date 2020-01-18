@@ -1,1 +1,53 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+
+$custom-typography: mat-typography-config($font-family: Raleway);
+@include mat-core($custom-typography);
+
+
+$md-colorprimario: (
+    50 : #ecfbfc,
+    100 : #cef6f8,
+    200 : #aef0f3,
+    300 : #8eeaee,
+    400 : #75e6ea,
+    500 : #5de1e6,
+    600 : #55dde3,
+    700 : #4bd9df,
+    800 : #41d5db,
+    900 : #30cdd5,
+    A100 : #ffffff,
+    A200 : #e5feff,
+    A400 : #b3fbff,
+    A700 : #99faff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+$custom-primary: mat-palette($md-colorprimario);
+$custom-accent: mat-palette($mat-amber);
+$custom-theme: mat-light-theme($custom-primary, $custom-accent);
+@include angular-material-theme($custom-theme);
+
+html,
+body {
+  height: 100%;
+  font-family: Raleway;
+}
+body {
+  margin: 0;
+}

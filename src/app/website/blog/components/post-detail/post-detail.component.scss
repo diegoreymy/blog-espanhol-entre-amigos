@@ -1,0 +1,35 @@
+@import '~@ngx-share/button/themes/material/material-dark-theme';
+
+.post {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(5, auto);
+}
+
+.post-img img {
+  width: 100%;
+}
+
+.post-text p {
+  line-height: 1.5;
+  font-size: 1.3em;
+}
+
+@media only screen and (min-width: 996px) {
+  .post {
+    padding: 4em;
+    margin: 0 8em;
+  }
+  .post-img img.img-mobile {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 995px) {
+  .post {
+    padding: 1em;
+  }
+  .post-img img.img-desktop {
+    display: none;
+  }
+}

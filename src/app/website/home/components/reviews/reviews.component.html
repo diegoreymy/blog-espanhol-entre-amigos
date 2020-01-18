@@ -1,0 +1,12 @@
+<div class="reviews">
+    <fa-icon (click)="prevPage()" [icon]="icons.faAngleLeft"></fa-icon>
+    <app-reviews-list class="app-reviews-list"></app-reviews-list>
+    <fa-icon (click)="nextPage()" [icon]="icons.faAngleRight"></fa-icon>
+    <div class="indicators">
+        <fa-icon 
+            *ngFor="let page of [0,1,2,3,4]; let index = index"
+            (click)="goToPage(index + 1)" 
+            [icon]="actualPage === index + 1 ? icons.solidCircle : icons.regularCircle"
+        ></fa-icon>
+    </div>
+</div>

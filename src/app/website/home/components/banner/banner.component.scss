@@ -1,0 +1,11 @@
+.banner-home{
+    display: grid;
+    grid-template: 700px / 1fr;
+}
+
+.banner-image{
+    background-image: url('https://via.placeholder.com/2000x1333');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}

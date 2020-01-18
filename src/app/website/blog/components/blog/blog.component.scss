@@ -1,0 +1,17 @@
+@media only screen and (min-width: 996px) {
+    .blog{
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+        grid-template-rows: 1fr;
+        padding: 4em;
+    }
+}
+
+@media only screen and (max-width: 995px) {
+    .blog{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+        padding: 2em;
+    }
+}
