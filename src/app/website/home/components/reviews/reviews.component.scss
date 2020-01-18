@@ -32,6 +32,9 @@ $optional-color: #fff;
     cursor: pointer;
     padding: 1em;
     color: $primary-color;
+    &.disabled {
+      color: #e8e8e8;
+    }
   }
 
   .indicators {
