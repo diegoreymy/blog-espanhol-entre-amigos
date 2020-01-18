@@ -5,7 +5,7 @@
     <div class="indicators">
         <fa-icon 
             *ngFor="let page of [0,1,2,3,4]; let index = index"
-            (click)="goToPage(index + 1)" 
+            (click)="goToPage(index)" 
             [icon]="actualPage === index + 1 ? icons.solidCircle : icons.regularCircle"
         ></fa-icon>
     </div>
