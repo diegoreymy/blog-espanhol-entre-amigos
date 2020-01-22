@@ -59,3 +59,18 @@ $optional-color: #fff;
     }
   }
 }
+
+@media only screen and (max-width: 986px){
+  .reviews-card {
+    padding: 0;
+    margin: 0;
+
+    .reviews-card-text {
+      blockquote {
+        fa-icon {
+          font-size: 1.5em;
+        }
+      }
+    }
+  }
+}

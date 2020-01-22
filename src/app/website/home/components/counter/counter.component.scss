@@ -2,7 +2,7 @@ $primary-color: #5ce1e6;
 $secondary-color: #666;
 $optional-color: #fff;
 .counter {
-    background-color: $secondary-color;
+  background-color: $secondary-color;
   .items {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -38,6 +38,34 @@ $optional-color: #fff;
         hr {
           border: solid 2px $primary-color;
           width: 30%;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 986px) {
+  .counter {
+    .items {
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      padding: 2em 1em;
+      row-gap: 20px;
+      column-gap: 10px;
+      .item {
+        p {
+          font-size: 1em;
+        }
+        .item-icon {
+          fa-icon {
+            font-size: 2em;
+          }
+        }
+        .item-number {
+          p {
+            font-size: 2em;
+          }
         }
       }
     }

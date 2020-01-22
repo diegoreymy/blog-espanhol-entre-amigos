@@ -4,3 +4,16 @@
   grid-template-rows: auto;
   justify-items: center;
 }
+
+@media only screen and (max-width: 986px){
+  .reviews-list {
+    grid-template-columns: 1fr;
+    max-height: 530px;
+    grid-template-rows: 1fr;
+    overflow-y: hidden;
+
+    app-reviews-card.card:not(:nth-of-type(1)){
+      display: none;
+    }
+  }
+}

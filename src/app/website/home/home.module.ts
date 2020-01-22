@@ -10,6 +10,7 @@ import { CounterDirective } from './components/counter/directives/counter.direct
 import { ReviewsComponent } from './components/reviews/reviews.component';
 import { ReviewsListComponent } from './components/reviews/components/reviews-list/reviews-list.component';
 import { ReviewsCardComponent } from './components/reviews/components/reviews-card/reviews-card.component';
+import { AboutMeComponent } from './components/about-me/about-me.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ReviewsCardComponent } from './components/reviews/components/reviews-ca
     CounterDirective,
     ReviewsComponent,
     ReviewsListComponent,
-    ReviewsCardComponent
+    ReviewsCardComponent,
+    AboutMeComponent
   ],
   imports: [
     CommonModule,

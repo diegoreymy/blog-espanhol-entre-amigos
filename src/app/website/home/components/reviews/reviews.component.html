@@ -1,4 +1,10 @@
 <div class="reviews">
+    <div class="title-reviews">
+        <p>
+            Que dicen mis alumnos...
+        </p>
+        <hr>
+    </div>
     <fa-icon (click)="prevPage()" [icon]="icons.faAngleLeft" [ngClass]="{'disabled': actualPage === 1}"></fa-icon>
     <app-reviews-list class="app-reviews-list"></app-reviews-list>
     <fa-icon (click)="nextPage()" [icon]="icons.faAngleRight" [ngClass]="{'disabled': actualPage === totalPages}"></fa-icon>
