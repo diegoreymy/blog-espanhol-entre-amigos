@@ -1,9 +1,0 @@
-.home{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, auto);
-
-    .reviews-section{
-        overflow-x: auto;
-    }
-}

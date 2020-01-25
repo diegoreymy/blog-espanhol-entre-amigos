@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './home.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -11,6 +11,9 @@ import { ReviewsComponent } from './components/reviews/reviews.component';
 import { ReviewsListComponent } from './components/reviews/components/reviews-list/reviews-list.component';
 import { ReviewsCardComponent } from './components/reviews/components/reviews-card/reviews-card.component';
 import { AboutMeComponent } from './components/about-me/about-me.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { MaterialModule } from '../../material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,12 +25,15 @@ import { AboutMeComponent } from './components/about-me/about-me.component';
     ReviewsComponent,
     ReviewsListComponent,
     ReviewsCardComponent,
-    AboutMeComponent
+    AboutMeComponent,
+    ContactComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     FontAwesomeModule,
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }

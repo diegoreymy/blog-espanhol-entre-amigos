@@ -1,11 +1,45 @@
 <div class="contact-container">
     <div class="contact-text">
-        text
+        <p>
+            ¿Quieres ser parte de mi comunidad de alumnos?, o ¿Quieres conocer más
+            sobre mi trabajo?, déjame un mensaje.
+        </p>
     </div>
     <div class="contact-social-network">
-        social
+        <div class="social-network-item">
+            <img src="/assets/images/icons/instagram-color.png" alt="Instagram" />
+            <p>espanhol_amigos</p>
+        </div>
+        <div class="social-network-item">
+            <img src="/assets/images/icons/skype-color.png" alt="Skype" />
+            <p>marioly.guerrero</p>
+        </div>
+        <div class="social-network-item">
+            <img src="/assets/images/icons/gmail.png" alt="Gmail" />
+            <p>espanolentreamigos@gmail.com</p>
+        </div>
     </div>
     <div class="contact-form">
-        form
+        <div class="title-form">
+            <img src="/assets/images/icons/logo-icon.png" alt="logo" />
+            <p>Contacto</p>
+        </div>
+        <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+                <input matInput placeholder="Nombre" formControlName="name" required />
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Correo electrónico" formControlName="email" required />
+                <mat-error *ngIf="formFields.email.invalid">{{
+            getErrorMessage()
+          }}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <textarea matInput placeholder="Mensaje" formControlName="message" required></textarea>
+            </mat-form-field>
+            <button color="primary" class="form-button" mat-raised-button mat-button>
+                Enviar
+            </button>
+        </form>
     </div>
 </div>
