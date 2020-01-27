@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+      }
+
+      .bgimg {
+        background-color: #5ce1e6;
+        height: 100%;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        color: white;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 25px;
+      }
+
+      .topleft {
+        position: absolute;
+        top: 0;
+        left: 16px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .bottomleft {
+        position: absolute;
+        bottom: 0;
+        left: 16px;
+        width: 100%;
+      }
+
+      .middle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: #666;
+        font-family: "Amatic SC";
+      }
+
+      hr {
+        margin: auto;
+        width: 40%;
+      }
+      footer {
+        font-size: 12px;
+        padding: 10px;
+        color: #666;
+      }
+      @media only screen and (min-width: 996px) {
+        .contenedor {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-rows: auto auto;
+          background-color: #5ce1e6;
+          height: 100%;
+          justify-items: center;
+          align-items: center;
+        }
+        .contenedor .item.social-icons {
+          display: grid;
+          grid-template-columns: repeat(5, 2em);
+          grid-template-rows: 1fr;
+          grid-column-gap: 10px;
+          justify-content: center;
+          height: 24px;
+        }
+        .contenedor .item.social-icons a {
+          background-repeat: no-repeat;
+        }
+        .contenedor .item.social-icons a.subitem:hover {
+          background-color: #666;
+        }
+        .contenedor .item.social-icons a.facebook {
+          background-image: url("./assets/images/icons/facebook-2.png");
+        }
+        .contenedor .item.social-icons a.facebook:hover {
+          background-image: url("./assets/images/icons/facebook.png");
+        }
+        .contenedor .item.social-icons a.instagram {
+          background-image: url("./assets/images/icons/instagram-2.png");
+        }
+        .contenedor .item.social-icons a.instagram:hover {
+          background-image: url("./assets/images/icons/instagram.png");
+        }
+        .contenedor .item.social-icons a.youtube {
+          background-image: url("./assets/images/icons/youtube-2.png");
+        }
+        .contenedor .item.social-icons a.youtube:hover {
+          background-image: url("./assets/images/icons/youtube.png");
+        }
+        .contenedor .item.social-icons a.spotify {
+          background-image: url("./assets/images/icons/spotify-2.png");
+        }
+        .contenedor .item.social-icons a.spotify:hover {
+          background-image: url("./assets/images/icons/spotify.png");
+        }
+        .contenedor .item.social-icons a.linkedin {
+          background-image: url("./assets/images/icons/linkedin-2.png");
+        }
+        .contenedor .item.social-icons a.linkedin:hover {
+          background-image: url("./assets/images/icons/linkedin.png");
+        }
+      }
+      @media only screen and (max-width: 995px) {
+        .contenedor {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-rows: repeat(3, auto);
+          background-color: #5ce1e6;
+          height: 100%;
+          justify-items: center;
+          align-items: center;
+          padding: 2em;
+        }
+        .contenedor .item.social-icons {
+          display: grid;
+          grid-template-columns: repeat(5, 2em);
+          grid-template-rows: 1fr;
+          grid-column-gap: 10px;
+          justify-content: center;
+          height: 24px;
+        }
+        .contenedor .item.social-icons a {
+          background-repeat: no-repeat;
+        }
+        .contenedor .item.social-icons a.facebook {
+          background-image: url("./assets/images/icons/facebook-2.png");
+        }
+        .contenedor .item.social-icons a.instagram {
+          background-image: url("./assets/images/icons/instagram-2.png");
+        }
+        .contenedor .item.social-icons a.youtube {
+          background-image: url("./assets/images/icons/youtube-2.png");
+        }
+        .contenedor .item.social-icons a.spotify {
+          background-image: url("./assets/images/icons/spotify-2.png");
+        }
+        .contenedor .item.social-icons a.linkedin {
+          background-image: url("./assets/images/icons/linkedin-2.png");
+        }
+        .contenedor .item.logo img {
+          width: 100%;
+          height: auto;
+        }
+        .contenedor .item.firma p {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="bgimg">
+      <div class="topleft">
+        <p>
+          <img src="./assets/images/logo.png" alt="Espanhol entre amigos" />
+        </p>
+      </div>
+      <div class="middle">
+        <h1>Pr&oacute;ximamente</h1>
+        <hr />
+        <p id="demo" style="font-size:75px"></p>
+      </div>
+      <div class="bottomleft">
+        <footer class="contenedor">
+          <div class="item social-icons">
+            <a href="https://www.instagram.com/espanholamigos/?hl=es" class="subitem instagram"></a>
+            <a href="https://open.spotify.com/episode/2tpxbrtWyQPMCY8s1vALLN?si=3ELS0in1QmSyqxFFdh_QWA" class="subitem spotify"></a>
+            <a href="https://www.linkedin.com/in/marioly-guerrero-5b873b12b/" class="subitem linkedin"></a>
+          </div>
+          <div class="item firma">
+            <p>
+              Copyright &copy; 2020. Todos los derechos reservados. Sitio web en
+              desarrollo.
+            </p>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      // Set the date we're counting down to
+      var countDownDate = new Date("April 30, 2020 15:37:25").getTime();
+
+      // Update the count down every 1 second
+      var countdownfunction = setInterval(function() {
+        // Get todays date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now an the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("demo").innerHTML =
+          days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+          clearInterval(countdownfunction);
+          document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

@@ -7,7 +7,7 @@ $color_principal: #5ce1e6;
   color: $color_1;
 }
 .mat-button {
-  font-weight: 600;
+  font-weight: 100;
 }
 @media only screen and (min-width: 996px) {
   .mat-button {
@@ -22,7 +22,7 @@ $color_principal: #5ce1e6;
     grid-template-rows: 1fr;
     padding: 10px 10px;
     height: 6em;
-    box-shadow: 0em 0em 2em 0px rgba(0,0,0,0.15);
+    box-shadow: 0em 0em 2em 0px rgba(0, 0, 0, 0.15);
   }
   .item {
     &:nth-of-type(1) {
@@ -81,7 +81,7 @@ $color_principal: #5ce1e6;
     grid-template-rows: 1fr;
     padding: 10px 10px;
     height: 100%;
-    box-shadow: 0em 0em 2em 0px rgba(0,0,0,0.15);
+    box-shadow: 0em 0em 2em 0px rgba(0, 0, 0, 0.15);
   }
   .icons-menu-mobile {
     display: grid;
