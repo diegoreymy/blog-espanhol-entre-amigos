@@ -1,51 +1,46 @@
-<div>
+<div class="header-container">
   <mat-toolbar color="Basic">
-    <mat-toolbar-row class="contenedor">
-      <div class="item">
+    <mat-toolbar-row class="toolbar">
+      <div class="item button-menu">
         <button mat-icon-button class="icon-open-menu">
-          <mat-icon (click)="toggleMenu()">menu</mat-icon>
+          <mat-icon (click)="toggleMenu()">{{
+            openMenu ? "close" : "menu"
+          }}</mat-icon>
         </button>
       </div>
-      <div class="item">
+      <div class="item logo">
         <img src="/assets/images/logo.png" alt="Espanhol entre amigos" />
       </div>
-      <div class="item">
-        <a routerLink="/" mat-button class="subitem">Inicio</a>
-        <a routerLink="/sobre-mi" mat-button class="subitem">Sobre mí</a>
-        <a routerLink="/cursos" mat-button class="subitem">Cursos</a>
-        <a routerLink="/blog" mat-button class="subitem">Blog</a>
-        <a routerLink="/contacto" mat-button class="subitem">Contacto</a>
-      </div>
-      <div class="item">
-        <a href="#" class="subitem facebook"></a>
-        <a href="#" class="subitem instagram"></a>
-        <a href="#" class="subitem youtube"></a>
-      </div>
+      <nav>
+        <ul class="item links-menu">
+          <li><a routerLink="/" mat-button class="subitem">Inicio</a></li>
+          <li><a routerLink="/sobre-mi" mat-button class="subitem">Sobre mí</a></li>
+          <li><a routerLink="/cursos" mat-button class="subitem">Cursos</a></li>
+          <li><a routerLink="/blog" mat-button class="subitem">Blog</a></li>
+          <li><a routerLink="/contacto" mat-button class="subitem">Contacto</a></li>
+        </ul>
+      </nav>
+      <ul class="item social-media-links">
+        <li class="subitem"><a href="#" class="facebook"><fa-icon [icon]="faFacebook" class="icon"></fa-icon></a></li>
+        <li class="subitem"><a href="#" class="instagram"><fa-icon [icon]="faInstagram" class="icon"></fa-icon></a></li>
+        <li class="subitem"><a href="#" class="youtube"><fa-icon [icon]="faYoutube" class="icon"></fa-icon></a></li>
+      </ul>
     </mat-toolbar-row>
   </mat-toolbar>
-  <div class="sidebar-container">
+  <div class="sidebar-container" [ngClass]="{ active: openMenu }">
     <nav class="sidebar-menu efecto-slide" [ngClass]="{ 'sidebar-menu-open': openMenu }">
       <ul class="menu-items" (click)="toggleMenu()">
-        <li>
-          <button mat-icon-button class="close">
-            <mat-icon>close</mat-icon>
-          </button>
-        </li>
-        <li><a routerLink="/" mat-button class="subitem">Inicio</a></li>
-        <li>
-          <a routerLink="/sobre-mi" mat-button class="subitem">Sobre mí</a>
-        </li>
-        <li><a routerLink="/cursos" mat-button class="subitem">Cursos</a></li>
-        <li><a routerLink="/blog" mat-button class="subitem">Blog</a></li>
-        <li>
-          <a routerLink="/contacto" mat-button class="subitem">Contacto</a>
-        </li>
-        <li>
-          <div class="icons-menu-mobile">
-            <a href="#" class="subitem"><img src="/assets/images/icons/facebook-2.png" alt="facebook" /></a>
-            <a href="#" class="subitem"><img src="/assets/images/icons/instagram-2.png" alt="instagram" /></a>
-            <a href="#" class="subitem"><img src="/assets/images/icons/youtube-2.png" alt="youtube" /></a>
-          </div>
+        <li class="subitem"><a routerLink="/" mat-button class="subitem-link">Inicio</a></li>
+        <li class="subitem"><a routerLink="/sobre-mi" mat-button class="subitem-link">Sobre mí</a></li>
+        <li class="subitem"><a routerLink="/cursos" mat-button class="subitem-link">Cursos</a></li>
+        <li class="subitem"><a routerLink="/blog" mat-button class="subitem-link">Blog</a></li>
+        <li class="subitem"><a routerLink="/contacto" mat-button class="subitem-link">Contacto</a></li>
+        <li class="subitem">
+          <ul class="icons-menu-mobile">
+            <li class="subitem"><a href="#" class="subitem-link"><fa-icon [icon]="faFacebook" class="icon"></fa-icon></a></li>
+            <li class="subitem"><a href="#" class="subitem-link"><fa-icon [icon]="faInstagram" class="icon"></fa-icon></a></li>
+            <li class="subitem"><a href="#" class="subitem-link"><fa-icon [icon]="faYoutube" class="icon"></fa-icon></a></li>
+          </ul>
         </li>
       </ul>
     </nav>

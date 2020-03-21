@@ -12,12 +12,12 @@
 
 .post-text p {
   line-height: 1.5;
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 @media only screen and (min-width: 996px) {
   .post {
-    padding: 4em;
+    padding: 2rem;
     margin: 0 8em;
   }
   .post-img img.img-mobile {
@@ -27,7 +27,7 @@
 
 @media only screen and (max-width: 995px) {
   .post {
-    padding: 1em;
+    padding: 1rem;
   }
   .post-img img.img-desktop {
     display: none;

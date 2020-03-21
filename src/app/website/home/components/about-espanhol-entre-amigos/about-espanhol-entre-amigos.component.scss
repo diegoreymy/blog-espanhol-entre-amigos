@@ -1,0 +1,46 @@
+.container-about-espanhol-entre-amigos {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  padding: 1rem;
+  @media only screen and (min-width: 987px) {
+    grid-template-columns: auto auto;
+  }
+
+  .image-container {
+    align-self: center;
+    @media only screen and (min-width: 987px) {
+      padding: 5rem;
+    }
+    img {
+      width: 100%;
+    }
+  }
+
+  .description-container {
+    @media only screen and (min-width: 987px) {
+      padding: 5rem;
+    }
+
+    h2 {
+      font-family: "Amatic SC";
+      font-size: 1.5rem;
+      text-align: center;
+      @media only screen and (min-width: 987px) {
+        font-size: 3rem;
+        font-weight: 300;
+        margin-top: 0;
+      }
+    }
+
+    p {
+      width: 100%;
+      font-size: 1rem;
+      line-height: 1.5;
+      text-align: center;
+      @media only screen and (min-width: 987px) {
+        font-size: 1.25rem;
+      }
+    }
+  }
+}

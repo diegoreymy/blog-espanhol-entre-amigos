@@ -8,6 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LayoutComponent } from './components/layout/layout.component';
 
 import { MaterialModule } from '../material/material.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { RouterModule } from '@angular/router';
 
@@ -22,7 +23,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     WebsiteRoutingModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    FontAwesomeModule
   ]
 })
 export class WebsiteModule { }

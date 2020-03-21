@@ -14,6 +14,7 @@ import { AboutMeComponent } from './components/about-me/about-me.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { MaterialModule } from '../../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AboutEspanholEntreAmigosComponent } from './components/about-espanhol-entre-amigos/about-espanhol-entre-amigos.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReviewsListComponent,
     ReviewsCardComponent,
     AboutMeComponent,
-    ContactComponent
+    ContactComponent,
+    AboutEspanholEntreAmigosComponent
   ],
   imports: [
     CommonModule,

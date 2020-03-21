@@ -2,119 +2,73 @@ $color_1: #666;
 $color_2: #fff;
 $color_principal: #5ce1e6;
 
-footer {
+.contenedor {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(3, auto);
+  background-color: $color_principal;
+  height: 100%;
+  justify-items: center;
+  align-items: center;
+  padding: 1rem;
   font-size: 12px;
-  padding: 10px;
   color: $color_1;
-}
-
-@media only screen and (min-width: 996px) {
-  .contenedor {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    background-color: $color_principal;
-    height: 100%;
-    justify-items: center;
-    align-items: center;
-    .item {
-      &.social-icons {
-        display: grid;
-        grid-template-columns: repeat(5, 2em);
-        grid-template-rows: 1fr;
-        grid-column-gap: 10px;
-        justify-content: center;
-        height: 24px;
-        a {
-          background-repeat: no-repeat;
-          &.subitem:hover {
-            background-color: $color_1;
-          }
-          &.facebook {
-            background-image: url("/assets/images/icons/facebook-2.png");
-          }
-          &.facebook:hover {
-            background-image: url("/assets/images/icons/facebook.png");
-          }
-          &.instagram {
-            background-image: url("/assets/images/icons/instagram-2.png");
-          }
-          &.instagram:hover {
-            background-image: url("/assets/images/icons/instagram.png");
-          }
-          &.youtube {
-            background-image: url("/assets/images/icons/youtube-2.png");
-          }
-          &.youtube:hover {
-            background-image: url("/assets/images/icons/youtube.png");
-          }
-          &.spotify {
-            background-image: url("/assets/images/icons/spotify-2.png");
-          }
-          &.spotify:hover {
-            background-image: url("/assets/images/icons/spotify.png");
-          }
-          &.linkedin {
-            background-image: url("/assets/images/icons/linkedin-2.png");
-          }
-          &.linkedin:hover {
-            background-image: url("/assets/images/icons/linkedin.png");
-          }
+  .item {
+    &.social-icons {
+      display: grid;
+      grid-template-columns: repeat(5, 1.5rem);
+      grid-template-rows: auto;
+      grid-column-gap: 10px;
+      justify-content: center;
+      height: 1.5rem;
+      a {
+        background-repeat: no-repeat;
+        &.subitem:hover {
+          background-color: $color_1;
+        }
+        &.facebook {
+          background-image: url("/assets/images/icons/facebook-2.png");
+        }
+        &.facebook:hover {
+          background-image: url("/assets/images/icons/facebook.png");
+        }
+        &.instagram {
+          background-image: url("/assets/images/icons/instagram-2.png");
+        }
+        &.instagram:hover {
+          background-image: url("/assets/images/icons/instagram.png");
+        }
+        &.youtube {
+          background-image: url("/assets/images/icons/youtube-2.png");
+        }
+        &.youtube:hover {
+          background-image: url("/assets/images/icons/youtube.png");
+        }
+        &.spotify {
+          background-image: url("/assets/images/icons/spotify-2.png");
+        }
+        &.spotify:hover {
+          background-image: url("/assets/images/icons/spotify.png");
+        }
+        &.linkedin {
+          background-image: url("/assets/images/icons/linkedin-2.png");
+        }
+        &.linkedin:hover {
+          background-image: url("/assets/images/icons/linkedin.png");
         }
       }
     }
-  }
-}
 
-@media only screen and (max-width: 995px) {
-  .contenedor {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, auto);
-    background-color: #5ce1e6;
-    height: 100%;
-    justify-items: center;
-    align-items: center;
-    padding: 2em;
-    .item {
-      &.social-icons {
-        display: grid;
-        grid-template-columns: repeat(5, 2em);
-        grid-template-rows: 1fr;
-        grid-column-gap: 10px;
-        justify-content: center;
-        height: 24px;
-        a {
-          background-repeat: no-repeat;
-          &.facebook {
-            background-image: url("/assets/images/icons/facebook-2.png");
-          }
-          &.instagram {
-            background-image: url("/assets/images/icons/instagram-2.png");
-          }
-          &.youtube {
-            background-image: url("/assets/images/icons/youtube-2.png");
-          }
-          &.spotify {
-            background-image: url("/assets/images/icons/spotify-2.png");
-          }
-          &.linkedin {
-            background-image: url("/assets/images/icons/linkedin-2.png");
-          }
-        }
+    &.logo {
+      img {
+        width: 100%;
+        height: auto;
       }
+    }
 
-      &.logo {
-        img {
-          width: 100%;
-          height: auto;
-        }
-      }
-
-      &.firma {
-        p {
-          text-align: center;
-        }
+    &.firma {
+      p {
+        text-align: center;
       }
     }
   }
