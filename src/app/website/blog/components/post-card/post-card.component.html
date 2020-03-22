@@ -1,9 +1,9 @@
 <div class="post-card">
     <div class="post-card-content">
-        <a routerLink='esto-es-un-ejemplo' class="post-card-link">
+        <a [routerLink]='post.slug' [state]="{id: post.id}" class="post-card-link">
             <img class="post-card-image"
-                src="https://via.placeholder.com/400x600"
-                alt="Post" />
+                [src]="post.image"
+                [alt]="post.title" />
         </a>
     </div>
 </div>

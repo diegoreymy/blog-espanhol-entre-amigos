@@ -15,7 +15,6 @@ import { ContactComponent } from './components/contact/contact.component';
 import { MaterialModule } from '../../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AboutEspanholEntreAmigosComponent } from './components/about-espanhol-entre-amigos/about-espanhol-entre-amigos.component';
-import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -36,8 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeRoutingModule,
     FontAwesomeModule,
     MaterialModule,
-    ReactiveFormsModule,
-    HttpClientModule
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }

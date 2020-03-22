@@ -37,7 +37,7 @@ export class ReviewsComponent implements OnInit {
   }
 
   nextPage() {
-    const reviewsBox = document.querySelector('.app-reviews-list');
+    const reviewsBox = this.element.nativeElement.querySelector('.app-reviews-list');
     const widthPage = reviewsBox.clientWidth;
     if (this.actualPage < this.totalPages) {
       this.actualPage === 1 ? this.tempWhidthPage = widthPage : this.tempWhidthPage += widthPage;
@@ -47,7 +47,7 @@ export class ReviewsComponent implements OnInit {
   }
 
   prevPage() {
-    const reviewsBox = document.querySelector('.app-reviews-list');
+    const reviewsBox = this.element.nativeElement.querySelector('.app-reviews-list');
     const widthPage = reviewsBox.clientWidth;
     if (this.actualPage > 1) {
       this.tempWhidthPage -= widthPage;
@@ -57,7 +57,7 @@ export class ReviewsComponent implements OnInit {
   }
 
   goToPage(page: number) {
-    const reviewsBox = document.querySelector('.app-reviews-list');
+    const reviewsBox = this.element.nativeElement.querySelector('.app-reviews-list');
     const widthPage = reviewsBox.clientWidth;
     reviewsBox.scroll((widthPage * page), 0);
     this.actualPage = page + 1;
