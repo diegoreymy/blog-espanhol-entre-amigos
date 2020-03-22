@@ -1,9 +1,9 @@
 <div class="reviews-card">
     <div class="reviews-card-avatar">
-        <img src="/assets/images/marioly.jpg" alt="avatar review">
+        <img [src]="review.image" alt="avatar review">
     </div>
     <div class="reviews-card-title">
-        <p>Marioly Guerrero</p>
+        <p>{{review.name}}</p>
     </div>
     <div class="reviews-card-stars">
         <fa-icon [icon]="icons.faStar" class="star" *ngFor="let item of [1,2,3,4,5]"></fa-icon>
@@ -11,7 +11,7 @@
     <div class="reviews-card-text">
         <blockquote>
             <fa-icon [icon]="icons.faQuoteLeft" class="quote-left"></fa-icon>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ratione facere consequuntur exercitationem possimus quasi necessitatibus nihil alias. Provident magni aspernatur ut ipsa delectus sint itaque odit deserunt quis eligendi?</p>
+            <p class="block-ellipsis" [ngClass]="{'see-more': seeMore}" (click)="seeMore = !seeMore"><span>{{review.message}}</span></p>
             <fa-icon [icon]="icons.faQuoteRight" class="quote-right"></fa-icon>
         </blockquote>
         

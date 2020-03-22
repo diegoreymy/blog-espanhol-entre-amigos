@@ -2,6 +2,9 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 
 import { faAngleLeft, faAngleRight, faCircle as solidCircle } from '@fortawesome/free-solid-svg-icons';
 import { faCircle as regularCircle } from '@fortawesome/free-regular-svg-icons';
+import { ReviewsService } from './services/reviews.service';
+import { Observable } from 'rxjs';
+import { IReview } from './models/iReview.model';
 
 @Component({
   selector: 'app-reviews',
@@ -12,8 +15,9 @@ export class ReviewsComponent implements OnInit {
 
   actualPage = 1;
   tempWhidthPage = 0;
-  totalPages = 5;
+  totalPages = 6;
   activeIndicator = false;
+  reviewsService$: Observable<IReview[]>;
 
   icons = {
     faAngleLeft,
@@ -23,8 +27,11 @@ export class ReviewsComponent implements OnInit {
   };
 
   constructor(
-    private element: ElementRef
-  ) { }
+    private element: ElementRef,
+    private reviewsService: ReviewsService
+  ) {
+    this.reviewsService$ = this.reviewsService.getReviews();
+   }
 
   ngOnInit() {
   }
