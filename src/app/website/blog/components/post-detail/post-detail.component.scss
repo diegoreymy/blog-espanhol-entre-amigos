@@ -1,35 +1,110 @@
-@import '~@ngx-share/button/themes/material/material-dark-theme';
+@import "~@ngx-share/button/themes/material/material-dark-theme";
 
 .post {
+  padding: 1rem;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(5, auto);
-}
-
-.post-img img {
-  width: 100%;
-}
-
-.post-text p {
-  line-height: 1.5;
-  font-size: 1rem;
-}
-
-@media only screen and (min-width: 996px) {
-  .post {
+  @media only screen and (min-width: 996px) {
     padding: 2rem;
     margin: 0 8em;
   }
-  .post-img img.img-mobile {
-    display: none;
+  .post-img {
+    img {
+      width: 100%;
+      box-shadow: 0em 0em 1rem 0px rgba(0, 0, 0, 0.15);
+      &.img-desktop {
+        display: none;
+      }
+      &.img-mobile {
+        display: block;
+      }
+      @media only screen and (min-width: 996px) {
+        &.img-mobile {
+          display: none;
+        }
+        &.img-desktop {
+          display: block;
+        }
+      }
+    }
   }
-}
-
-@media only screen and (max-width: 995px) {
-  .post {
-    padding: 1rem;
+  .post-text {
+    p,
+    ul {
+      line-height: 1.5;
+      font-size: 1rem;
+      text-align: justify;
+      @media only screen and (min-width: 996px) {
+        font-size: 1.25rem;
+        line-height: 2rem;
+      }
+    }
+    h2 {
+      font-size: 1.25rem;
+      @media only screen and (min-width: 996px) {
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+        margin-top: 60px;
+      }
+    }
   }
-  .post-img img.img-desktop {
-    display: none;
+  .assign-text {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    font-size: 2rem;
+    font-family: "Moontine";
+    @media only screen and (min-width: 987px) {
+      width: 85%;
+      margin: 20px auto;
+      text-align: right;
+      font-size: 3rem;
+    }
+  }
+  .post-social-share-buttons {
+    p {
+      @media only screen and (min-width: 987px) {
+        font-size: 1.25rem;
+      }
+    }
+  }
+  blockquote {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: auto;
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 30px 0;
+    padding: 20px 20px 20px 0;
+    quotes: "\201C""\201D";
+    font-style: italic;
+    @media only screen and (min-width: 996px) {
+      grid-template-columns: 10% 90%;
+      padding: 20px 90px 20px 20px;
+    }
+    p {
+      font-size: 1rem !important;
+      line-height: 1.5rem !important;
+      text-align: center !important;
+      @media only screen and (min-width: 996px) {
+        font-size: 1.5rem !important;
+        line-height: 3rem !important;
+        text-align: center !important;
+      }
+    }
+    &:before {
+      font-family: "auto";
+      content: open-quote;
+      color: #ccc;
+      font-size: 5rem;
+      line-height: 5rem;
+      margin-right: 0rem;
+      vertical-align: 0rem;
+      @media only screen and (min-width: 996px) {
+        font-size: 10rem;
+        line-height: 10rem;
+      }
+    }
   }
 }

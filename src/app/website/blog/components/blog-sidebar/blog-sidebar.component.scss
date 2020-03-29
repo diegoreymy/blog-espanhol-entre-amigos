@@ -1,19 +1,18 @@
 .blog-sidebar {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: auto;
   grid-template-rows: repeat(2, auto);
   position: sticky;
   top: 0;
-  grid-row-gap: 20px;
 }
 
 .blog-sidebar-about-me {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
   justify-items: center;
   align-items: center;
-  row-gap: 30px;
+  row-gap: 15px;
 }
 
 .title-about-me {
