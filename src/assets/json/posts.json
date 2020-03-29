@@ -1,14 +1,20 @@
 [
     {
         "id": 1,
-        "slug": "10-consejos-para-aprender-español-rápido-y-divertido",
+        "slug": "10-consejos-para-aprender-espanol-rapido-y-divertido",
         "image": "assets/images/blog/10-consejos-para-aprender-espanol-es.png",
         "title": "10 consejos para aprender español rápido y divertido"
     },
     {
         "id": 2,
-        "slug": "5-razones-por-las-que-los-brasileños-deberían-aprender-español",
+        "slug": "5-razones-por-las-que-los-brasilenos-deberian-aprender-espanol",
         "image": "assets/images/blog/5-razones-por-las-que-los-brasilenos-deberian-aprender-espanol-es.png",
         "title": "5 razones por las que los brasileños deberían aprender español"
+    },
+    {
+        "id": 3,
+        "slug": "5-senales-de-que-estas-hablando-portunol",
+        "image": "assets/images/blog/5-senales-de-que-estas-hablando-portunol-es.jpg",
+        "title": "5 señales de que estás hablando portuñol"
     }
 ]

@@ -15,6 +15,10 @@
   transition: opacity 0.75s ease;
 }
 
+.post-card-link {
+  display: flex;
+}
+
 .post-card-link::before {
   content: url("/assets/images/icons/logo-icon.png");
   position: absolute;
