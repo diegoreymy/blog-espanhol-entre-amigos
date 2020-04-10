@@ -1,24 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { IPost } from '../models/IPost.model';
+import { filter } from 'rxjs/operators';
+import { IPosts } from '../models/IPosts.model';
 import { HttpClient } from '@angular/common/http';
-import { IPostDetail } from '../models/iPostDetail.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlogService {
 
+  url = 'https://espanol-entre-amigos.firebaseio.com';
+
   constructor(private http: HttpClient) { }
 
-  public getPosts(): Observable<IPost[]> {
-    return this.http.get<IPost[]>('assets/json/posts.json');
+  public getPosts(): Observable<IPosts[]> {
+    return this.http.get<IPosts[]>(`${this.url}/posts.json`);
   }
 
-  public getPostDetails(slug: string): Observable<IPostDetail[]> {
-    return this.http.get<IPostDetail[]>('assets/json/post-details.json').pipe(
-      map((post: IPostDetail[]) => post.filter(resp => resp.slug === slug))
-    );
+  public getPostDetails(id: string): Observable<IPosts> {
+    return this.http.get<IPosts>(`${this.url}/posts/${id}.json`);
   }
 }

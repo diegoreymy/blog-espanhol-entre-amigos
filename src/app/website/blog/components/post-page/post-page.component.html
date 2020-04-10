@@ -1,4 +1,4 @@
 <div class="post-page">
-    <app-post-detail *ngFor="let post of postDetail$ | async" [post]="post"></app-post-detail>
+    <app-post-detail [post]="postDetail$ | async"></app-post-detail>
     <app-blog-sidebar></app-blog-sidebar> 
 </div>

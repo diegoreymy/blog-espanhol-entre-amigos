@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../../services/blog.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { IPostDetail } from '../../models/iPostDetail.model';
+import { IPosts } from '../../models/iPosts.model';
 import { filter, map } from 'rxjs/operators';
 
 @Component({
@@ -12,18 +12,18 @@ import { filter, map } from 'rxjs/operators';
 })
 export class PostPageComponent implements OnInit {
 
-  postDetail$: Observable<IPostDetail[]>;
+  postDetail$: Observable<IPosts>;
   slug: string;
-  id: number;
+  id: string;
 
   constructor(
     private blogService: BlogService,
     private route: ActivatedRoute
   ) {
-    this.route.params.subscribe(params => this.slug = params.slug);
-    this.postDetail$ = this.blogService.getPostDetails(this.slug);
-   }
-
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.postDetail$ = this.blogService.getPostDetails(this.id);
+  }
+  
   ngOnInit() {
   }
 

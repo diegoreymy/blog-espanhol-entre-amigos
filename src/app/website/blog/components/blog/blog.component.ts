@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IPost } from '../../models/IPost.model';
+import { IPosts } from '../../models/IPosts.model';
 import { BlogService } from '../../services/blog.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { BlogService } from '../../services/blog.service';
 })
 export class BlogComponent implements OnInit {
 
-  posts$: Observable<IPost[]>;
+  posts$: Observable<IPosts[]>;
 
   constructor(
     private blogService: BlogService

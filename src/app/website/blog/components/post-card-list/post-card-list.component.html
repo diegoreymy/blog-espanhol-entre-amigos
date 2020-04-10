@@ -1,4 +1,4 @@
-<div class="container-card-list">
+<div class="container-card-list" *ngIf="posts">
     <app-post-card class="item-card-list" [post]="post" *ngFor='let post of posts'></app-post-card>
 </div>
 

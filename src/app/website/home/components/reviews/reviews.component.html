@@ -5,14 +5,17 @@
         </h2>
         <hr>
     </div>
-    <fa-icon (click)="prevPage()" [icon]="icons.faAngleLeft" [ngClass]="{'disabled': actualPage === 1}"></fa-icon>
-    <app-reviews-list class="app-reviews-list" [reviews]="reviewsService$ | async"></app-reviews-list>
-    <fa-icon (click)="nextPage()" [icon]="icons.faAngleRight" [ngClass]="{'disabled': actualPage === totalPages}"></fa-icon>
-    <div class="indicators">
+    <fa-icon (click)="prevPage()" [icon]="icons.faAngleLeft" [ngClass]="{'disabled': actualItem === 1}"></fa-icon>
+    <app-reviews-list class="app-reviews-list" [reviews]="reviews"></app-reviews-list>
+    <fa-icon (click)="nextPage()" [icon]="icons.faAngleRight" [ngClass]="{'disabled': actualItem === totalPages}"></fa-icon>
+    <div class="indicators" *ngIf="size > 986">
         <fa-icon 
-        *ngFor="let page of [0,1,2,3,4,5]; let index = index"
+        *ngFor="let page of totalPagesArray; let index = index"
         (click)="goToPage(index)"
-        [icon]="actualPage === index + 1 ? icons.solidCircle : icons.regularCircle"
+        [icon]="actualItem === index + 1 ? icons.solidCircle : icons.regularCircle"
         ></fa-icon>
+    </div>
+    <div class="indicators" *ngIf="size < 986">
+        {{ actualItem }} de {{ totalPages }}
     </div>
 </div>

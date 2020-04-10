@@ -1,7 +1,7 @@
-<div class="post">
+<div class="post" *ngIf="post">
     <div class="post-img">
-        <img [src]="post.image" alt="Post" class="img-desktop" />
-        <img [src]="post.imageMobile" alt="Post" class="img-mobile" />
+        <img [src]="post.horizontalImage" alt="Post" class="img-desktop" />
+        <img [src]="post.squareImage" alt="Post" class="img-mobile" />
     </div>
     <div class="post-title">
         <h1>{{post.title}}</h1>
@@ -22,7 +22,7 @@
         'messenger',
         'whatsapp',
         'email'
-      ]" [show]="8" [url]="'https://www.espanholentreamigos.com.br/blog/' + post.slug" [title]="'Titulo del post'" [description]="'Descripción del post'"
+      ]" [show]="8" [url]="'https://www.espanholentreamigos.com.br/blog/'+ post.id + '/' + post.slug" [title]="'Titulo del post'" [description]="'Descripción del post'"
             [autoSetMeta]="false"></share-buttons>
     </div>
 </div>

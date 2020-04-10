@@ -1,19 +1,13 @@
 .reviews-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto;
+  grid-template-columns: repeat(24, 25%);
+  grid-template-rows: 1fr;
   justify-items: center;
 }
 
 @media only screen and (max-width: 986px){
   .reviews-list {
-    grid-template-columns: 1fr;
-    max-height: 530px;
+    grid-template-columns: repeat(24, 100%);
     grid-template-rows: 1fr;
-    overflow-y: hidden;
-
-    app-reviews-card.card:not(:nth-of-type(1)){
-      display: none;
-    }
   }
 }
