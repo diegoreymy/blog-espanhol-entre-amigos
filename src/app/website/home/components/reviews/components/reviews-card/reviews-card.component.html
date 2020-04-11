@@ -1,6 +1,6 @@
 <div class="reviews-card">
     <div class="reviews-card-avatar">
-        <img [src]="review.image" alt="avatar review">
+        <img [src]="review.image" alt="Avatar de {{review.name}}">
     </div>
     <div class="reviews-card-title">
         <p>{{review.name}}</p>
@@ -11,7 +11,9 @@
     <div class="reviews-card-text">
         <blockquote>
             <fa-icon [icon]="icons.faQuoteLeft" class="quote-left"></fa-icon>
-            <p class="block-ellipsis" [ngClass]="{'see-more': seeMore}" (click)="seeMore = !seeMore"><span>{{review.message}}</span></p>
+            <button (click)="seeMore = !seeMore" [attr.aria-expanded]="seeMore" class="btn-review-text">
+                <p class="block-ellipsis" [ngClass]="{'see-more': seeMore}"><span lang="pt">{{review.message}}</span></p>
+            </button>
             <fa-icon [icon]="icons.faQuoteRight" class="quote-right"></fa-icon>
         </blockquote>
         

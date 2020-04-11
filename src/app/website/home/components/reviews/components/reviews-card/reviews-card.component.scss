@@ -1,5 +1,5 @@
 $primary-color: #5ce1e6;
-$secondary-color: #666;
+$secondary-color: #000;
 $optional-color: #fff;
 .reviews-card {
   display: grid;
@@ -37,22 +37,26 @@ $optional-color: #fff;
       grid-template-rows: 1fr;
       column-gap: 10px;
       margin: 0;
-      p {
-        text-align: center;
-        line-height: 30px;
-        background-color: #f5f5f5;
-        color: $primary-color;
-        font-size: 1.25rem;
-        font-weight: bold;
-        margin: 0;
-        padding: 1rem;
-        font-style: italic;
-        border-radius: 10px;
-        cursor: pointer;
-        span {
+      .btn-review-text {
+        border: none;
+        background: none;
+        p {
+          text-align: center;
+          line-height: 30px;
+          background-color: #f5f5f5;
           color: $secondary-color;
-          font-size: 1rem;
-          font-weight: 300;
+          font-size: 1.25rem;
+          font-weight: bold;
+          margin: 0;
+          padding: 1rem;
+          font-style: italic;
+          border-radius: 10px;
+          cursor: pointer;
+          span {
+            color: $secondary-color;
+            font-size: 1rem;
+            font-weight: 300;
+          }
         }
       }
       fa-icon {

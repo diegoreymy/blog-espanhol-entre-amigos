@@ -2,7 +2,7 @@
   <mat-toolbar color="Basic">
     <mat-toolbar-row class="toolbar">
       <div class="item button-menu">
-        <button mat-icon-button class="icon-open-menu">
+        <button mat-icon-button class="icon-open-menu" aria-label="Menu">
           <mat-icon (click)="toggleMenu()">{{
             openMenu ? "close" : "menu"
           }}</mat-icon>
@@ -21,9 +21,9 @@
         </ul>
       </nav>
       <ul class="item social-media-links">
-        <li class="subitem"><a href="https://www.facebook.com/espanolentreamigos/" target="_blank" class="facebook"><fa-icon [icon]="faFacebook" class="icon"></fa-icon></a></li>
-        <li class="subitem"><a href="https://www.instagram.com/espanolentreamigos/?hl=es" target="_blank" class="instagram"><fa-icon [icon]="faInstagram" class="icon"></fa-icon></a></li>
-        <li class="subitem"><a href="https://www.youtube.com/channel/UCCeJvOxD-3ylePcNqXFlVOA" target="_blank" class="youtube"><fa-icon [icon]="faYoutube" class="icon"></fa-icon></a></li>
+        <li class="subitem"><a href="https://www.facebook.com/espanolentreamigos/" aria-label="facebook" target="_blank" class="facebook"><fa-icon [icon]="faFacebook" class="icon"></fa-icon></a></li>
+        <li class="subitem"><a href="https://www.instagram.com/espanolentreamigos/?hl=es" aria-label="instagram" target="_blank" class="instagram"><fa-icon [icon]="faInstagram" class="icon"></fa-icon></a></li>
+        <li class="subitem"><a href="https://www.youtube.com/channel/UCCeJvOxD-3ylePcNqXFlVOA" aria-label="youtube" target="_blank" class="youtube"><fa-icon [icon]="faYoutube" class="icon"></fa-icon></a></li>
       </ul>
     </mat-toolbar-row>
   </mat-toolbar>
@@ -37,9 +37,9 @@
         <li class="subitem"><a href="#contacto" mat-button class="subitem-link">Contacto</a></li>
         <li class="subitem">
           <ul class="icons-menu-mobile">
-            <li class="subitem"><a href="#" class="subitem-link"><fa-icon [icon]="faFacebook" class="icon"></fa-icon></a></li>
-            <li class="subitem"><a href="#" class="subitem-link"><fa-icon [icon]="faInstagram" class="icon"></fa-icon></a></li>
-            <li class="subitem"><a href="#" class="subitem-link"><fa-icon [icon]="faYoutube" class="icon"></fa-icon></a></li>
+            <li class="subitem"><a href="#" aria-label="facebook" class="subitem-link"><fa-icon [icon]="faFacebook" class="icon"></fa-icon></a></li>
+            <li class="subitem"><a href="#" aria-label="instagram" class="subitem-link"><fa-icon [icon]="faInstagram" class="icon"></fa-icon></a></li>
+            <li class="subitem"><a href="#" aria-label="youtube" class="subitem-link"><fa-icon [icon]="faYoutube" class="icon"></fa-icon></a></li>
           </ul>
         </li>
       </ul>

@@ -1,3 +1,5 @@
-<div class="reviews-list">
-    <app-reviews-card class="card" *ngFor="let review of reviews" [review]="review"></app-reviews-card>
-</div>
+<ul class="reviews-list">
+    <li class="reviews-item" *ngFor="let review of reviews">
+        <app-reviews-card class="card" [review]="review"></app-reviews-card>
+    </li>
+</ul>

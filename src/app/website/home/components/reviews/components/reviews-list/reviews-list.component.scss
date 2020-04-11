@@ -1,13 +1,11 @@
-.reviews-list {
-  display: grid;
-  grid-template-columns: repeat(24, 25%);
-  grid-template-rows: 1fr;
-  justify-items: center;
-}
-
-@media only screen and (max-width: 986px){
   .reviews-list {
     grid-template-columns: repeat(24, 100%);
     grid-template-rows: 1fr;
+    list-style: none;
+    @media only screen and (min-width: 986px){
+      display: grid;
+      grid-template-columns: repeat(24, 25%);
+      grid-template-rows: 1fr;
+      justify-items: center;
+    }
   }
-}
