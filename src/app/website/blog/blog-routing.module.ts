@@ -11,7 +11,7 @@ const routes: Routes = [
     component: BlogComponent
   },
   {
-    path: ':id/:slug',
+    path: ':slug',
     component: PostPageComponent
   }
 ];

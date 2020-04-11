@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import { IPosts } from '../../models/IPosts.model';
+import { IPostDetail } from '../../models/IPostDetail.model';
 
 @Component({
   selector: 'app-post-detail',
@@ -9,7 +9,7 @@ import { IPosts } from '../../models/IPosts.model';
 })
 export class PostDetailComponent implements OnInit {
 
-  @Input() post: IPosts;
+  @Input() post: IPostDetail;
 
   constructor() {}
 

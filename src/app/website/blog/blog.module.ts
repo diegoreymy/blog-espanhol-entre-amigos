@@ -10,6 +10,7 @@ import { BlogSidebarComponent } from './components/blog-sidebar/blog-sidebar.com
 import { PostPageComponent } from './components/post-page/post-page.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { ShareButtonsModule } from '@ngx-share/buttons';
+import { RouterModule } from '@angular/router';
 import './components/social-networks-share/icons';
 
 
@@ -26,7 +27,8 @@ import './components/social-networks-share/icons';
     CommonModule,
     BlogRoutingModule,
     MaterialModule,
-    ShareButtonsModule
+    ShareButtonsModule,
+    RouterModule
   ]
 })
 export class BlogModule { }

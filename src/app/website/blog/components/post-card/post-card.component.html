@@ -1,6 +1,6 @@
 <div class="post-card">
     <div class="post-card-content">
-        <a [routerLink]='[post.id, post.slug]' class="post-card-link">
+        <a [routerLink]='[post.slug]' [fragment]="post.id" class="post-card-link">
             <img class="post-card-image"
                 [src]="post.veticalImage"
                 [alt]="post.title" />

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../../services/blog.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { IPosts } from '../../models/iPosts.model';
-import { filter, map } from 'rxjs/operators';
+import { IPostDetail } from '../../models/IPostDetail.model';
+import { IPosts } from '../../models/IPosts.model';
 
 @Component({
   selector: 'app-post-page',
@@ -12,7 +12,7 @@ import { filter, map } from 'rxjs/operators';
 })
 export class PostPageComponent implements OnInit {
 
-  postDetail$: Observable<IPosts>;
+  postDetail$: Observable<IPostDetail>;
   slug: string;
   id: string;
 
@@ -20,10 +20,25 @@ export class PostPageComponent implements OnInit {
     private blogService: BlogService,
     private route: ActivatedRoute
   ) {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.postDetail$ = this.blogService.getPostDetails(this.id);
+    this.route.fragment.subscribe( fragment => {
+      if (fragment !== null) {
+        this.id = fragment;
+        this.postDetail$ = this.blogService.getPostDetails(this.id);
+      } else {
+        this.slug = this.route.snapshot.paramMap.get('slug');
+        this.blogService.getPosts().
+        subscribe((posts: IPosts[]) => {
+          posts.map((post: IPosts) => {
+            if ( post.slug === this.slug ) {
+              this.id = String(post.id);
+              this.postDetail$ = this.blogService.getPostDetails(this.id);
+            }
+          });
+        });
+      }
+    });
   }
-  
+
   ngOnInit() {
   }
 
