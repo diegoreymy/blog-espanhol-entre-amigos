@@ -65,7 +65,7 @@ $color_principal: #5ce1e6;
           display: none;
           @media only screen and (min-width: 996px) {
             display: grid;
-            grid-template-columns: repeat(3, auto);
+            grid-template-columns: repeat(4, auto);
             grid-template-rows: auto;
             grid-column-gap: 1.5rem;
             -webkit-box-pack: center;
@@ -145,9 +145,10 @@ $color_principal: #5ce1e6;
         align-content: center;
         .icons-menu-mobile {
           display: grid;
-          grid-template-columns: repeat(3, auto);
+          grid-template-columns: repeat(4, auto);
           grid-template-rows: auto;
           justify-content: center;
+          font-size: 1.5rem;
           img {
             width: 1.5rem;
           }
