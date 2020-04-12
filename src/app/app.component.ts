@@ -14,7 +14,8 @@ declare var gtag;
 export class AppComponent {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private titleService: Title
   ) {
     const navEndEvents$ = this.router.events
       .pipe(
@@ -24,6 +25,14 @@ export class AppComponent {
       gtag('config', 'G-0G922NQS1C', {
         page_path: event.urlAfterRedirects
       });
+      this.titleService.setTitle(this.setTitle(event.urlAfterRedirects));
     });
+  }
+
+  setTitle(url: string): string {
+    const urlParts = url.split('/');
+    const titleTrainCase = urlParts[urlParts.length - 1];
+    const title = titleTrainCase.split('-').join(' ');
+    return title === '' || title.includes('#') ? 'Español entre Amigos' : `Español entre Amigos - ${title}`;
   }
 }
