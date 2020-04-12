@@ -38,10 +38,10 @@ export class ReviewsComponent implements OnInit, OnDestroy {
       this.setTotalPages();
     }));
     this.subscriptions.add(fromEvent(window, 'resize').subscribe((event: Event) => {
-        this.getPageWidth(event);
-        this.setTotalPages();
+      this.getPageWidth(event);
+      this.setTotalPages();
     }));
-   }
+  }
 
   ngOnInit() {
   }

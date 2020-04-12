@@ -5,15 +5,17 @@
         </h2>
         <hr>
     </div>
-    <fa-icon (click)="prevPage()" [icon]="icons.faAngleLeft" [ngClass]="{'disabled': actualItem === 1}"></fa-icon>
+    <button (click)="prevPage()" [disabled]="actualItem === 1" attr.aria-label="ir a página {{actualItem === 1 ? actualItem : actualItem - 1}} de {{totalPages}}">
+        <fa-icon [icon]="icons.faAngleLeft" [ngClass]="{'disabled': actualItem === 1}"></fa-icon>
+    </button>
     <app-reviews-list class="app-reviews-list" [reviews]="reviews"></app-reviews-list>
-    <fa-icon (click)="nextPage()" [icon]="icons.faAngleRight" [ngClass]="{'disabled': actualItem === totalPages}"></fa-icon>
+    <button (click)="nextPage()" [disabled]="actualItem === totalPages" attr.aria-label="ir a página {{actualItem === totalPages ? actualItem : actualItem + 1}} de {{totalPages}}">
+        <fa-icon [icon]="icons.faAngleRight" [ngClass]="{'disabled': actualItem === totalPages}">
+        </fa-icon>
+    </button>
     <div class="indicators" *ngIf="size > 986">
-        <fa-icon 
-        *ngFor="let page of totalPagesArray; let index = index"
-        (click)="goToPage(index)"
-        [icon]="actualItem === index + 1 ? icons.solidCircle : icons.regularCircle"
-        ></fa-icon>
+        <fa-icon *ngFor="let page of totalPagesArray; let index = index" (click)="goToPage(index)"
+            [icon]="actualItem === index + 1 ? icons.solidCircle : icons.regularCircle"></fa-icon>
     </div>
     <div class="indicators" *ngIf="size < 986">
         {{ actualItem }} de {{ totalPages }}
