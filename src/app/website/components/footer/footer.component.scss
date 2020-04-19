@@ -1,5 +1,6 @@
 $color_1: #000;
 $color_2: #fff;
+$color_3: #666;
 $color_principal: #5ce1e6;
 
 .contenedor {
@@ -14,51 +15,23 @@ $color_principal: #5ce1e6;
   font-size: 12px;
   color: $color_1;
   .item {
-    &.social-icons {
+    &.social-media-links {
       display: grid;
-      grid-template-columns: repeat(5, 1.5rem);
+      grid-template-columns: repeat(4, auto);
       grid-template-rows: auto;
-      grid-column-gap: 10px;
+      grid-column-gap: 1.5rem;
+      -webkit-box-pack: center;
       justify-content: center;
-      height: 1.5rem;
-      a {
-        background-repeat: no-repeat;
-        &.subitem:hover {
-          background-color: $color_1;
-        }
-        &.facebook {
-          background-image: url("/assets/images/icons/facebook-2.png");
-        }
-        &.facebook:hover {
-          background-image: url("/assets/images/icons/facebook.png");
-        }
-        &.instagram {
-          background-image: url("/assets/images/icons/instagram-2.png");
-        }
-        &.instagram:hover {
-          background-image: url("/assets/images/icons/instagram.png");
-        }
-        &.youtube {
-          background-image: url("/assets/images/icons/youtube-2.png");
-        }
-        &.youtube:hover {
-          background-image: url("/assets/images/icons/youtube.png");
-        }
-        &.spotify {
-          background-image: url("/assets/images/icons/spotify-2.png");
-        }
-        &.spotify:hover {
-          background-image: url("/assets/images/icons/spotify.png");
-        }
-        &.linkedin {
-          background-image: url("/assets/images/icons/linkedin-2.png");
-        }
-        &.linkedin:hover {
-          background-image: url("/assets/images/icons/linkedin.png");
+      .subitem {
+        .icon {
+          font-size: 24px;
+          color: $color_3;
+          &:hover {
+            color: $color_1;
+          }
         }
       }
     }
-
     &.logo {
       img {
         width: 100%;
@@ -71,5 +44,10 @@ $color_principal: #5ce1e6;
         text-align: center;
       }
     }
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 }
