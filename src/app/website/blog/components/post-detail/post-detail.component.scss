@@ -1,4 +1,6 @@
-@import "~@ngx-share/button/themes/material/material-dark-theme";
+$primary-color: #5ce1e6;
+$secondary-color: #666;
+$optional-color: #fff;
 
 .post {
   padding: 1rem;
@@ -106,5 +108,14 @@
         line-height: 10rem;
       }
     }
+  }
+}
+.link-to-back {
+  color: $secondary-color;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 1rem;
+  @media only screen and (min-width: 996px) {
+    margin: 1rem 2rem;
   }
 }

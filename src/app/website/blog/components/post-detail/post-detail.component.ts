@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { IPostDetail } from '../../models/IPostDetail.model';
 
 @Component({
@@ -10,6 +11,10 @@ import { IPostDetail } from '../../models/IPostDetail.model';
 export class PostDetailComponent implements OnInit {
 
   @Input() post: IPostDetail;
+
+  icons = {
+    faArrowLeft,
+  };
 
   constructor() {}
 

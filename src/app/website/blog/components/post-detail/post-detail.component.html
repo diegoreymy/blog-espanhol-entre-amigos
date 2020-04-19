@@ -1,3 +1,7 @@
+<a routerLink="../" class="link-to-back">
+    <fa-icon [icon]="icons.faArrowLeft"></fa-icon>
+    volver
+</a>
 <div class="post" *ngIf="post">
     <div class="post-img">
         <img [src]="post.horizontalImage" alt="Post" class="img-desktop" />
@@ -22,7 +26,7 @@
         'messenger',
         'whatsapp',
         'email'
-      ]" [show]="8" [url]="'https://www.espanholentreamigos.com.br/blog/'+ post.id + '/' + post.slug" [title]="'Titulo del post'" [description]="'Descripción del post'"
+      ]" [show]="8" [url]="'https://www.espanholentreamigos.com.br/blog/' + post.slug" [title]="'Titulo del post'" [description]="post.title"
             [autoSetMeta]="false"></share-buttons>
     </div>
 </div>
