@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutEspanholEntreAmigosComponent implements OnInit {
 
+  showVideo = false;
+
   constructor() { }
 
   ngOnInit() {
