@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faFacebook, faInstagram, faYoutube, faSpotify } from '@fortawesome/free-brands-svg-icons';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,8 @@ export class HeaderComponent implements OnInit {
   faInstagram = faInstagram;
   faYoutube = faYoutube;
   faSpotify = faSpotify;
+  faTimes = faTimes;
+  faBars = faBars;
 
   constructor() { }
 

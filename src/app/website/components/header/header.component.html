@@ -2,10 +2,8 @@
   <mat-toolbar color="Basic">
     <mat-toolbar-row class="toolbar">
       <div class="item button-menu">
-        <button mat-icon-button class="icon-open-menu" aria-label="Menu">
-          <mat-icon (click)="toggleMenu()">{{
-            openMenu ? "close" : "menu"
-          }}</mat-icon>
+        <button mat-icon-button class="icon-open-menu" aria-label="Menu" (click)="toggleMenu()">
+          <fa-icon [icon]="openMenu ? faTimes : faBars" class="icon"></fa-icon>
         </button>
       </div>
       <div class="item logo">

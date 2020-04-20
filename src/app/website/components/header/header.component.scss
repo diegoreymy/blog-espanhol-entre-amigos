@@ -20,6 +20,11 @@ $color_principal: #5ce1e6;
       }
     }
   }
+  .button-menu {
+    .icon {
+      font-size: 1.25rem;
+    }
+  }
   img {
     width: 100%;
     @media only screen and (min-width: 996px) {

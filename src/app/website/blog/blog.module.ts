@@ -9,9 +9,9 @@ import { PostCardListComponent } from './components/post-card-list/post-card-lis
 import { BlogSidebarComponent } from './components/blog-sidebar/blog-sidebar.component';
 import { PostPageComponent } from './components/post-page/post-page.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
-import { ShareButtonsModule } from '@ngx-share/buttons';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { RouterModule } from '@angular/router';
-import './components/social-networks-share/icons';
 
 
 @NgModule({
@@ -28,6 +28,7 @@ import './components/social-networks-share/icons';
     BlogRoutingModule,
     MaterialModule,
     ShareButtonsModule,
+    ShareIconsModule.forRoot(),
     RouterModule
   ]
 })
