@@ -3,12 +3,6 @@
 $custom-typography: mat-typography-config($font-family: Raleway);
 @include mat-core($custom-typography);
 
-@font-face {
-  font-family: Moontine;
-  src: url(assets/fonts/MoonTime-Regular.otf) format("opentype");
-}
-
-
 $md-colorprimario: (
     50 : #ecfbfc,
     100 : #cef6f8,
