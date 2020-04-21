@@ -11,7 +11,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    preloadingStrategy: PreloadAllModules
+    preloadingStrategy: PreloadAllModules,
+    useHash: false,
+    anchorScrolling: 'enabled',
   })],
   exports: [RouterModule]
 })
