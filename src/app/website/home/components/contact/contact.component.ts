@@ -1,18 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
   submitted = false;
+  private unsubscribe = new Subject<void>();
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
@@ -39,12 +43,15 @@ export class ContactComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
-    if (this.form.invalid) {
-      return;
+    if (this.form.valid) {
+      this.http.post('https://espanholentreamigos.com.br/assets/mail/email.php', this.form.value).subscribe();
+      console.log(this.form.value);
     }
+  }
 
-    console.log(this.form.value);
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 
 }
