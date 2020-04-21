@@ -3,11 +3,11 @@
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
     $request = json_decode(file_get_contents("php://input"));
-    $from_email = "contato@espanholentreamigos.com.br";
+    $from_email = $request->email;
 
-    $message = "Welcome.";
+    $message = $request->message;
 
-    $from_name = "your name goes here";
+    $from_name = $request->name;
 
     $to_email = "espanolentreamigos@gmail.com";
 
@@ -16,7 +16,7 @@
     $email_subject = "Nuevo mensaje de $from_name desde el blog";
 
     $email_body = '<html><body>';
-    $email_body .= "$<p><strong>Nombre:</strong>$from_name</p><p><strong>Email:</strong> $from_email</p>
+    $email_body .= "<p><strong>Nombre: </strong>$from_name</p><p><strong>Email: </strong> $from_email</p>
                     <p>$message</p>";
     $email_body .= '</body></html>';
 
@@ -25,15 +25,6 @@
     $headers .= "From: $from_email\n";
     $headers .= "Reply-To: $from_email";
 
-
-
     mail($to_email,$email_subject,$email_body,$headers);
-
-    // $response_array['status'] = 'success';
-    // $response_array['from'] = $from_email;
-
     echo json_encode($request);
-    // echo json_encode($from_email);
-    // header($response_array);
-    // return $from_email;
 ?>
