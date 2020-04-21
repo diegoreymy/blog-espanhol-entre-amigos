@@ -8,7 +8,7 @@
     <button (click)="prevPage()" [disabled]="actualItem === 1" attr.aria-label="ir a página {{actualItem === 1 ? actualItem : actualItem - 1}} de {{totalPages}}">
         <fa-icon [icon]="icons.faAngleLeft" [ngClass]="{'disabled': actualItem === 1}"></fa-icon>
     </button>
-    <app-reviews-list class="app-reviews-list" [reviews]="reviews"></app-reviews-list>
+    <app-reviews-list class="app-reviews-list" [reviews]="reviews" (scroll)="onScroll($event)"></app-reviews-list>
     <button (click)="nextPage()" [disabled]="actualItem === totalPages" attr.aria-label="ir a página {{actualItem === totalPages ? actualItem : actualItem + 1}} de {{totalPages}}">
         <fa-icon [icon]="icons.faAngleRight" [ngClass]="{'disabled': actualItem === totalPages}">
         </fa-icon>

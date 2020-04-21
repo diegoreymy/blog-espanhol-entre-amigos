@@ -21,6 +21,9 @@ export class ReviewsComponent implements OnInit, OnDestroy {
   reviews: IReview[] = [];
   size: number = window.innerWidth;
   totalPagesArray = [];
+  reviewsBox: HTMLDivElement;
+  widthItem: number;
+  scrollLeft: number;
 
   icons = {
     faAngleLeft,
@@ -36,6 +39,8 @@ export class ReviewsComponent implements OnInit, OnDestroy {
     this.subscriptions.add(this.reviewsService.getReviews().subscribe(reviews => {
       this.reviews = reviews;
       this.setTotalPages();
+      this.reviewsBox = this.element.nativeElement.querySelector('.app-reviews-list');
+      this.widthItem = this.reviewsBox.clientWidth;
     }));
     this.subscriptions.add(fromEvent(window, 'resize').subscribe((event: Event) => {
       this.getPageWidth(event);
@@ -51,31 +56,29 @@ export class ReviewsComponent implements OnInit, OnDestroy {
   }
 
   nextPage() {
-    const reviewsBox = this.element.nativeElement.querySelector('.app-reviews-list');
-    const widthItem = reviewsBox.clientWidth;
-    if (this.actualItem < this.totalPages) {
-      this.actualItem === 1 ? this.tempWhidthPage = widthItem : this.tempWhidthPage += widthItem;
-      reviewsBox.scroll((this.tempWhidthPage), 0);
-      this.actualItem++;
+    if (this.size > 986) {
+      if (this.actualItem < this.totalPages) { this.actualItem++; }
+    } else {
+      this.tempWhidthPage = Math.ceil(this.scrollLeft / this.widthItem) * this.widthItem;
     }
+    this.actualItem === 1 ? this.tempWhidthPage = this.widthItem : this.tempWhidthPage += this.widthItem;
+    this.reviewsBox.scroll((this.tempWhidthPage), 0);
   }
 
   prevPage() {
-    const reviewsBox = this.element.nativeElement.querySelector('.app-reviews-list');
-    const widthItem = reviewsBox.clientWidth;
-    if (this.actualItem > 1) {
-      this.tempWhidthPage -= widthItem;
-      reviewsBox.scroll((this.tempWhidthPage), 0);
-      this.actualItem--;
+    if (this.size > 986) {
+      if (this.actualItem > 1) { this.actualItem--; }
+    } else {
+      this.tempWhidthPage = Math.ceil(this.scrollLeft / this.widthItem) * this.widthItem;
     }
+    this.tempWhidthPage -= this.widthItem;
+    this.reviewsBox.scroll((this.tempWhidthPage), 0);
   }
 
   goToPage(page: number) {
-    const reviewsBox = this.element.nativeElement.querySelector('.app-reviews-list');
-    const widthItem = reviewsBox.clientWidth;
-    reviewsBox.scroll((widthItem * page), 0);
+    this.reviewsBox.scroll((this.widthItem * page), 0);
     this.actualItem = page + 1;
-    this.tempWhidthPage = widthItem * page;
+    this.tempWhidthPage = this.widthItem * page;
   }
 
   getPageWidth(event) {
@@ -87,6 +90,14 @@ export class ReviewsComponent implements OnInit, OnDestroy {
     this.totalPagesArray = [];
     for (let index = 0; index < this.totalPages; index++) {
       this.totalPagesArray.push(index);
+    }
+  }
+
+  onScroll(event: Event) {
+    if (this.size < 986) {
+      const target: any = event.target;
+      this.scrollLeft = target.scrollLeft;
+      this.actualItem = Math.ceil(this.scrollLeft / this.widthItem) + 1;
     }
   }
 }
