@@ -22,7 +22,7 @@ $color_principal: #5ce1e6;
   }
   .button-menu {
     .icon {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
     }
   }
   img {
@@ -35,6 +35,7 @@ $color_principal: #5ce1e6;
     background: #fff;
     color: $color_1;
     z-index: 3;
+    position: sticky;
     @media only screen and (min-width: 996px) {
       position: relative;
     }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { faFacebook, faInstagram, faYoutube, faSpotify } from '@fortawesome/free-brands-svg-icons';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -18,13 +19,16 @@ export class HeaderComponent implements OnInit {
   faTimes = faTimes;
   faBars = faBars;
 
-  constructor() { }
+  constructor(
+    @Inject(DOCUMENT) private document: Document
+  ) { }
 
   ngOnInit() {
   }
 
   toggleMenu() {
     this.openMenu = !this.openMenu;
+    this.openMenu === true ? this.document.body.classList.add('not-scroll') : this.document.body.classList.remove('not-scroll');
   }
 
 }

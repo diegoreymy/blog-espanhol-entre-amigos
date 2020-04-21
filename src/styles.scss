@@ -50,4 +50,7 @@ body {
 }
 body {
   margin: 0;
+  &.not-scroll {
+    overflow-y: hidden;
+  }
 }
