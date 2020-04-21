@@ -94,10 +94,18 @@ export class ReviewsComponent implements OnInit, OnDestroy {
   }
 
   onScroll(event: Event) {
+    this.cancelSeeMore();
     if (this.size < 986) {
       const target: any = event.target;
       this.scrollLeft = target.scrollLeft;
       this.actualItem = Math.ceil(this.scrollLeft / this.widthItem) + 1;
+    }
+  }
+
+  cancelSeeMore() {
+    const container = this.element.nativeElement.querySelector('p.see-more');
+    if (container) {
+      container.click();
     }
   }
 }

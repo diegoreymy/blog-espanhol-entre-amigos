@@ -26,6 +26,7 @@ export class AppComponent {
         page_path: event.urlAfterRedirects
       });
       this.titleService.setTitle(this.setTitle(event.urlAfterRedirects));
+      window.scrollTo(0, 0);
     });
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 
 import { faQuoteRight, faQuoteLeft, faStar } from '@fortawesome/free-solid-svg-icons';
 import { IReview } from '../../models/iReview.model';
@@ -19,9 +19,18 @@ export class ReviewsCardComponent implements OnInit {
     faStar
   };
 
-  constructor() { }
+  constructor(
+    private document: ElementRef
+  ) { }
 
   ngOnInit() {
   }
 
+  openSeeMore() {
+    const container = this.document.nativeElement.parentElement.parentElement.querySelector('p.see-more');
+    if (container && !this.seeMore) {
+      container.click();
+    }
+    this.seeMore = !this.seeMore;
+  }
 }

@@ -11,7 +11,7 @@
     <div class="reviews-card-text">
         <blockquote>
             <fa-icon [icon]="icons.faQuoteLeft" class="quote-left"></fa-icon>
-            <p lang="pt" class="block-ellipsis" (click)="seeMore = !seeMore" [ngClass]="{'see-more': seeMore}"><span lang="pt">{{review.message}}</span></p>
+            <p lang="pt" class="block-ellipsis" (click)="openSeeMore()" [ngClass]="{'see-more': seeMore}"><span lang="pt">{{review.message}}</span></p>
             <fa-icon [icon]="icons.faQuoteRight" class="quote-right"></fa-icon>
         </blockquote>
     </div>
