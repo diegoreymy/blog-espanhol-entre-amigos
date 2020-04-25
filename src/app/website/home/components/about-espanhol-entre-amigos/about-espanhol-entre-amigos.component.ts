@@ -1,17 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-about-espanhol-entre-amigos',
   templateUrl: './about-espanhol-entre-amigos.component.html',
   styleUrls: ['./about-espanhol-entre-amigos.component.scss']
 })
-export class AboutEspanholEntreAmigosComponent implements OnInit {
+export class AboutEspanholEntreAmigosComponent {
 
   showVideo = false;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }

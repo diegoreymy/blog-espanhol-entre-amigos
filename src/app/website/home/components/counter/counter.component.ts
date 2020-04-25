@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { faChalkboardTeacher, faComment, faUserGraduate, faGrinTears, faInfinity } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,7 +7,7 @@ import { faChalkboardTeacher, faComment, faUserGraduate, faGrinTears, faInfinity
   templateUrl: './counter.component.html',
   styleUrls: ['./counter.component.scss']
 })
-export class CounterComponent implements OnInit {
+export class CounterComponent {
 
   icons = {
     faChalkboardTeacher,
@@ -16,9 +16,4 @@ export class CounterComponent implements OnInit {
     faGrinTears,
     faInfinity
   };
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

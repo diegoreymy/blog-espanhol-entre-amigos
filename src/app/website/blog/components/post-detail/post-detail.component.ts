@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { IPostDetail } from '../../models/IPostDetail.model';
 
@@ -8,17 +8,11 @@ import { IPostDetail } from '../../models/IPostDetail.model';
   styleUrls: ['./post-detail.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class PostDetailComponent implements OnInit {
+export class PostDetailComponent {
 
   @Input() post: IPostDetail;
 
   icons = {
     faArrowLeft,
   };
-
-  constructor() {}
-
-  ngOnInit() {
-  }
-
 }

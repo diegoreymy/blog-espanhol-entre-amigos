@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IPosts } from '../../models/IPosts.model';
 
 @Component({
@@ -6,13 +6,8 @@ import { IPosts } from '../../models/IPosts.model';
   templateUrl: './post-card-list.component.html',
   styleUrls: ['./post-card-list.component.scss']
 })
-export class PostCardListComponent implements OnInit {
+export class PostCardListComponent {
 
   @Input() posts: IPosts[];
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }

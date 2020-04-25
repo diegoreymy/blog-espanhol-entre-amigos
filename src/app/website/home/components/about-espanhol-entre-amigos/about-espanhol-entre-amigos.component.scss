@@ -11,7 +11,7 @@
     align-self: center;
     grid-row-start: 2;
     grid-row-end: 3;
-    background: url('src/assets/images/home/youtube.jpg') no-repeat;
+    background: url('src/assets/images/home/youtube.jpg') no-repeat center;
     background-size: contain;
     @media only screen and (min-width: 987px) {
       padding: 5rem;
@@ -19,6 +19,7 @@
       grid-row-end: 2;
       justify-self: center;
       align-self: center;
+      background-size: auto;
     }
     iframe{
       width: 100%;

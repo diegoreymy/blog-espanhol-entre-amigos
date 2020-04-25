@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IReview } from '../../models/iReview.model';
 
 @Component({
@@ -6,13 +6,8 @@ import { IReview } from '../../models/iReview.model';
   templateUrl: './reviews-list.component.html',
   styleUrls: ['./reviews-list.component.scss']
 })
-export class ReviewsListComponent implements OnInit {
+export class ReviewsListComponent {
 
   @Input() reviews: IReview[];
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }
