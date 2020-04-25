@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { Component, Input, ElementRef } from '@angular/core';
 
 import { faQuoteRight, faQuoteLeft, faStar } from '@fortawesome/free-solid-svg-icons';
 import { IReview } from '../../models/iReview.model';
@@ -8,9 +8,10 @@ import { IReview } from '../../models/iReview.model';
   templateUrl: './reviews-card.component.html',
   styleUrls: ['./reviews-card.component.scss']
 })
-export class ReviewsCardComponent implements OnInit {
+export class ReviewsCardComponent {
 
   @Input() review: IReview;
+  @Input() loadAll: boolean;
   seeMore = false;
 
   icons = {
@@ -22,9 +23,6 @@ export class ReviewsCardComponent implements OnInit {
   constructor(
     private document: ElementRef
   ) { }
-
-  ngOnInit() {
-  }
 
   openSeeMore() {
     const container = this.document.nativeElement.parentElement.parentElement.querySelector('p.see-more');

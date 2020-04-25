@@ -9,5 +9,6 @@ import { IReview } from '../../models/iReview.model';
 export class ReviewsListComponent {
 
   @Input() reviews: IReview[];
+  @Input() loadAll: boolean;
 
 }

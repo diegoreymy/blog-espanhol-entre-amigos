@@ -24,6 +24,7 @@ export class ReviewsComponent implements OnInit, OnDestroy {
   reviewsBox: HTMLDivElement;
   widthItem: number;
   scrollLeft: number;
+  loadAll = false;
 
   icons = {
     faAngleLeft,
