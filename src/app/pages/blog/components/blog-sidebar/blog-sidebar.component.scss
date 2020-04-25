@@ -37,10 +37,6 @@
   line-height: 2;
 }
 
-.blog-sidebar-ads {
-  justify-self: center;
-}
-
 hr {
   border: 1px solid #5ce1e6;
   border-radius: 5px;
@@ -50,18 +46,10 @@ hr {
   .blog-sidebar {
     padding: 1rem;
   }
-
-  .blog-sidebar-ads .ads-mobile {
-    display: none;
-  }
 }
 
 @media only screen and (max-width: 995px) {
   .blog-sidebar {
     padding: 1rem;
-  }
-
-  .blog-sidebar-ads .ads-desktop {
-    display: none;
   }
 }
