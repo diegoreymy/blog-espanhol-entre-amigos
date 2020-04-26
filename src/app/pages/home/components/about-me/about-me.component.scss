@@ -16,6 +16,10 @@
         height: 570px;
         object-position: 0px -30px;
       }
+      @media only screen and (min-width: 987px) and (max-width: 1399px){
+        height: 420px;
+        object-position: 0px 0px;
+      }
     }
   }
   .about-me-text {

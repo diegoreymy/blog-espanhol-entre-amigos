@@ -13,6 +13,9 @@ $color_principal: #5ce1e6;
     @media only screen and (min-width: 996px) {
       font-size: 1.25rem;
     }
+    @media only screen and (min-width: 997px) and (max-width: 1399px){
+      font-size: 1.15rem;
+    }
     &:hover {
       @media only screen and (min-width: 996px) {
         opacity: 0.5;
@@ -49,6 +52,9 @@ $color_principal: #5ce1e6;
       @media only screen and (min-width: 996px) {
         grid-template-columns: 0fr 15fr 8fr 5fr;
       }
+      @media only screen and (min-width: 997px) and (max-width: 1399px){
+        grid-template-columns: 0fr 10fr 8fr 5fr;
+      }
       .icon-open-menu {
         z-index: 2;
       }
@@ -62,9 +68,19 @@ $color_principal: #5ce1e6;
           display: none;
           @media only screen and (min-width: 996px) {
             display: grid;
-            grid-template-columns: repeat(5, auto);
+            grid-template-columns: repeat(4, auto);
             grid-template-rows: auto;
             grid-column-gap: 10px;
+          }
+          @media only screen and (min-width: 997px) and (max-width: 1399px){
+            grid-column-gap: 0;
+          }
+        }
+        &.logo {
+          @media only screen and (min-width: 997px) and (max-width: 1399px){
+            img {
+              width: 400px;
+            }
           }
         }
         &.social-media-links {
@@ -76,10 +92,16 @@ $color_principal: #5ce1e6;
             grid-column-gap: 1.5rem;
             -webkit-box-pack: center;
             justify-content: center;
+            @media only screen and (min-width: 997px) and (max-width: 1399px){
+              grid-column-gap: 1.25rem;
+            }
             .subitem {
               .icon {
                 font-size: 24px;
                 color: $color_principal;
+                @media only screen and (min-width: 997px) and (max-width: 1399px){
+                  font-size: 21px;
+                }
                 &:hover {
                   color: $color_1;
                 }

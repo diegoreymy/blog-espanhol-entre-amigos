@@ -9,6 +9,10 @@ $optional-color: #fff;
   padding: 1rem;
   margin: 1rem;
   justify-items: center;
+  @media only screen and (min-width: 997px) and (max-width: 1399px){
+    padding: 0;
+    margin: 0;
+  }
   .reviews-card-avatar img {
     border-radius: 50%;
     width: 120px;
