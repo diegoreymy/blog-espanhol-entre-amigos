@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BlogService } from '../../services/blog.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -10,7 +10,7 @@ import { IPosts } from '../../models/IPosts.model';
   templateUrl: './post-page.component.html',
   styleUrls: ['./post-page.component.scss']
 })
-export class PostPageComponent implements OnInit {
+export class PostPageComponent {
 
   postDetail$: Observable<IPostDetail>;
   slug: string;
@@ -38,8 +38,4 @@ export class PostPageComponent implements OnInit {
       }
     });
   }
-
-  ngOnInit() {
-  }
-
 }

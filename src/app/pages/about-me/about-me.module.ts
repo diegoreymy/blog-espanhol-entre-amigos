@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { AboutMeRoutingModule } from './about-me-routing.module';
 import { AboutMeComponent } from './components/about-me/about-me.component';
-import { MaterialModule } from '../../material/material.module';
 
 
 @NgModule({
@@ -12,8 +11,7 @@ import { MaterialModule } from '../../material/material.module';
   ],
   imports: [
     CommonModule,
-    AboutMeRoutingModule,
-    MaterialModule
+    AboutMeRoutingModule
   ]
 })
 export class AboutMeModule { }

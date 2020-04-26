@@ -15,7 +15,6 @@ import { LayoutModule } from '@angular/cdk/layout';
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
     MatToolbarModule,
     MatButtonModule,
     MatFormFieldModule,
