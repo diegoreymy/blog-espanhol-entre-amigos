@@ -12,7 +12,10 @@ $optional-color: #fff;
   grid-template-rows: repeat(5, auto);
   @media only screen and (min-width: 996px) {
     padding: 2rem;
-    margin: 0 8em;
+    margin: 0 8rem;
+  }
+  @media only screen and (min-width: 997px) and (max-width: 1399px){
+    margin: 0;
   }
   .post-img {
     img {
