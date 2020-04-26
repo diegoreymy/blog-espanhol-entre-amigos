@@ -18,25 +18,15 @@ import { LayoutModule } from '@angular/cdk/layout';
     CommonModule,
     MatToolbarModule,
     MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatCardModule,
     MatFormFieldModule,
-    MatInputModule,
-    LayoutModule
+    MatInputModule
   ],
   exports: [
     CommonModule,
     MatToolbarModule,
     MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatCardModule,
     MatFormFieldModule,
-    MatInputModule,
-    LayoutModule
+    MatInputModule
   ]
 })
 export class MaterialModule { }
