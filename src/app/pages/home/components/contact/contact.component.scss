@@ -13,6 +13,10 @@
     width: 90%;
   }
 
+  ::ng-deep .succcess.mat-raised-button.mat-primary {
+    background-color: #6cc070;
+  }
+  
   .contact-text {
     grid-column-start: 1;
     grid-column-end: 2;

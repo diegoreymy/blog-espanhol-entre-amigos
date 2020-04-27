@@ -59,8 +59,8 @@
           required
         ></textarea>
       </mat-form-field>
-      <button color="primary" class="form-button" mat-raised-button mat-button>
-        Enviar
+      <button color="primary" [ngClass]="{'succcess': submitted}" class="form-button" mat-raised-button mat-button>
+        {{textButton}}
       </button>
     </form>
   </div>

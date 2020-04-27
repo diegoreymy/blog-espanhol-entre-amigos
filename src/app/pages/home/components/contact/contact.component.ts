@@ -12,6 +12,7 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
   submitted = false;
+  textButton = 'Enviar';
   private unsubscribe = new Subject<void>();
 
   constructor(
@@ -42,10 +43,16 @@ export class ContactComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.submitted = true;
+    this.textButton = 'Enviando...';
     if (this.form.valid) {
-      this.http.post('https://espanholentreamigos.com.br/assets/mail/email.php', this.form.value).subscribe();
-      console.log(this.form.value);
+      this.http.post('https://espanholentreamigos.com.br/assets/mail/email.php', this.form.value).subscribe(() => {
+        this.submitted = true;
+        this.textButton = 'Su mensaje ha sido enviado';
+        setTimeout(() => {
+          this.textButton = 'Enviar';
+          this.submitted = false;
+        }, 5000);
+      });
     }
   }
 
