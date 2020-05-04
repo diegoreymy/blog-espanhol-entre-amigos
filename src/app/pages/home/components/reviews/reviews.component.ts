@@ -60,7 +60,7 @@ export class ReviewsComponent implements OnInit, OnDestroy {
     if (this.size > 986) {
       if (this.actualItem < this.totalPages) { this.actualItem++; }
     } else {
-      this.tempWhidthPage = Math.ceil(this.scrollLeft / this.widthItem) * this.widthItem;
+      this.tempWhidthPage = Math.round(this.scrollLeft / this.widthItem) * this.widthItem;
     }
     this.actualItem === 1 ? this.tempWhidthPage = this.widthItem : this.tempWhidthPage += this.widthItem;
     this.reviewsBox.scroll((this.tempWhidthPage), 0);
@@ -70,7 +70,7 @@ export class ReviewsComponent implements OnInit, OnDestroy {
     if (this.size > 986) {
       if (this.actualItem > 1) { this.actualItem--; }
     } else {
-      this.tempWhidthPage = Math.ceil(this.scrollLeft / this.widthItem) * this.widthItem;
+      this.tempWhidthPage = Math.round(this.scrollLeft / this.widthItem) * this.widthItem;
     }
     this.tempWhidthPage -= this.widthItem;
     this.reviewsBox.scroll((this.tempWhidthPage), 0);
@@ -99,7 +99,7 @@ export class ReviewsComponent implements OnInit, OnDestroy {
     if (this.size < 986) {
       const target: any = event.target;
       this.scrollLeft = target.scrollLeft;
-      this.actualItem = Math.ceil(this.scrollLeft / this.widthItem) + 1;
+      this.actualItem = Math.round(this.scrollLeft / this.widthItem) + 1;
     }
   }
 
