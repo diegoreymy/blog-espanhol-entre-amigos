@@ -7,24 +7,38 @@
     padding: 2rem;
     margin: 0 20rem;
   }
-  @media only screen and (min-width: 997px) and (max-width: 1399px){
+  @media only screen and (min-width: 997px) and (max-width: 1399px) {
     margin: 0 8rem;
+  }
+
+  .img {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+    justify-content: center;
+    @media only screen and (min-width: 996px) {
+      grid-template-columns: 80%;
+    }
+    span {
+      font-size: 0.75rem;
+      background: #ddd;
+      color: #000;
+      font-style: italic;
+      padding: 5px 10px;
+      @media only screen and (min-width: 996px) {
+        font-size: 1rem;
+      }
+    }
   }
 
   img {
     width: 100%;
     box-shadow: 0em 0em 1rem 0px rgba(0, 0, 0, 0.15);
-    justify-self: center;
     &.img-desktop {
       display: none;
     }
     &.img-mobile {
       display: block;
-    }
-    &.img-h2 {
-      @media only screen and (min-width: 996px) {
-        width: 80%;
-      }
     }
     @media only screen and (min-width: 996px) {
       &.img-mobile {
