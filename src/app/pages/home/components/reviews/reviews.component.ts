@@ -63,7 +63,7 @@ export class ReviewsComponent implements OnInit, OnDestroy {
       this.tempWhidthPage = Math.round(this.scrollLeft / this.widthItem) * this.widthItem;
     }
     this.actualItem === 1 ? this.tempWhidthPage = this.widthItem : this.tempWhidthPage += this.widthItem;
-    this.reviewsBox.scroll((this.tempWhidthPage), 0);
+    this.reviewsBox.scrollLeft = this.tempWhidthPage;
   }
 
   prevPage() {
@@ -73,11 +73,11 @@ export class ReviewsComponent implements OnInit, OnDestroy {
       this.tempWhidthPage = Math.round(this.scrollLeft / this.widthItem) * this.widthItem;
     }
     this.tempWhidthPage -= this.widthItem;
-    this.reviewsBox.scroll((this.tempWhidthPage), 0);
+    this.reviewsBox.scrollLeft = this.tempWhidthPage;
   }
 
   goToPage(page: number) {
-    this.reviewsBox.scroll((this.widthItem * page), 0);
+    this.reviewsBox.scrollLeft =  this.widthItem * page;
     this.actualItem = page + 1;
     this.tempWhidthPage = this.widthItem * page;
   }
