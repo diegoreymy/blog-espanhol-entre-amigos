@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReviewsCardComponent } from './reviews-card.component';
 import { IReview } from '../../models/iReview.model';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 const review: IReview = {
   id: 1,
@@ -16,7 +17,8 @@ describe('ReviewsCardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReviewsCardComponent ]
+      declarations: [ ReviewsCardComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
   }));

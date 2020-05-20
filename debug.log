@@ -1,0 +1,30 @@
+[0520/132957.060:ERROR:process_reader_win.cc(151)] SuspendThread: Acceso denegado. (0x5)
+[0520/132957.064:ERROR:process_reader_win.cc(151)] SuspendThread: Acceso denegado. (0x5)
+[0520/134146.937:ERROR:process_reader_win.cc(151)] SuspendThread: Acceso denegado. (0x5)
+[0520/134146.941:ERROR:process_reader_win.cc(151)] SuspendThread: Acceso denegado. (0x5)
+[0520/153420.815:ERROR:process_memory_win.cc(73)] ReadMemory at 0x1f097b93780 of 72 bytes failed: Solo se completó una parte de una solicitud ReadProcessMemory o WriteProcessMemory. (0x12B)
+[0520/153420.817:WARNING:pe_image_annotations_reader.cc(134)] could not read annotations list object in C:\Program Files (x86)\Google\Chrome\Application\81.0.4044.138\chrome_elf.dll
+[0520/153420.818:ERROR:process_memory_win.cc(73)] ReadMemory at 0x1f098005b30 of 72 bytes failed: Solo se completó una parte de una solicitud ReadProcessMemory o WriteProcessMemory. (0x12B)
+[0520/153420.818:WARNING:pe_image_annotations_reader.cc(134)] could not read annotations list object in C:\Program Files (x86)\Google\Chrome\Application\81.0.4044.138\chrome.dll
+[0520/153420.818:ERROR:process_memory_win.cc(73)] ReadMemory at 0x1f097b00000 of 64 bytes failed: Solo se completó una parte de una solicitud ReadProcessMemory o WriteProcessMemory. (0x12B)
+[0520/153420.818:WARNING:pe_image_reader.cc(340)] could not read dos header from C:\WINDOWS\System32\WS2_32.dll
+[0520/153420.824:ERROR:process_memory_win.cc(73)] ReadMemory at 0x1f097b93780 of 72 bytes failed: Solo se completó una parte de una solicitud ReadProcessMemory o WriteProcessMemory. (0x12B)
+[0520/153420.825:WARNING:pe_image_annotations_reader.cc(134)] could not read annotations list object in C:\Program Files (x86)\Google\Chrome\Application\81.0.4044.138\chrome_elf.dll
+[0520/153420.825:ERROR:process_memory_win.cc(73)] ReadMemory at 0x1f098005b30 of 72 bytes failed: Solo se completó una parte de una solicitud ReadProcessMemory o WriteProcessMemory. (0x12B)
+[0520/153420.825:WARNING:pe_image_annotations_reader.cc(134)] could not read annotations list object in C:\Program Files (x86)\Google\Chrome\Application\81.0.4044.138\chrome.dll
+[0520/153420.825:ERROR:process_memory_win.cc(73)] ReadMemory at 0x1f097b00000 of 64 bytes failed: Solo se completó una parte de una solicitud ReadProcessMemory o WriteProcessMemory. (0x12B)
+[0520/153420.825:WARNING:pe_image_reader.cc(340)] could not read dos header from C:\WINDOWS\System32\WS2_32.dll
+[0520/153420.826:ERROR:process_memory_win.cc(73)] ReadMemory at 0x1f097b93780 of 72 bytes failed: Solo se completó una parte de una solicitud ReadProcessMemory o WriteProcessMemory. (0x12B)
+[0520/153420.826:WARNING:pe_image_annotations_reader.cc(134)] could not read annotations list object in C:\Program Files (x86)\Google\Chrome\Application\81.0.4044.138\chrome_elf.dll
+[0520/153420.826:ERROR:process_memory_win.cc(73)] ReadMemory at 0x1f098005b30 of 72 bytes failed: Solo se completó una parte de una solicitud ReadProcessMemory o WriteProcessMemory. (0x12B)
+[0520/153420.826:WARNING:pe_image_annotations_reader.cc(134)] could not read annotations list object in C:\Program Files (x86)\Google\Chrome\Application\81.0.4044.138\chrome.dll
+[0520/153420.826:ERROR:process_memory_win.cc(73)] ReadMemory at 0x1f097b00000 of 64 bytes failed: Solo se completó una parte de una solicitud ReadProcessMemory o WriteProcessMemory. (0x12B)
+[0520/153420.826:WARNING:pe_image_reader.cc(340)] could not read dos header from C:\WINDOWS\System32\WS2_32.dll
+[0520/153420.858:ERROR:process_memory_win.cc(73)] ReadMemory at 0x4d49100000 of 1048576 bytes failed: Solo se completó una parte de una solicitud ReadProcessMemory o WriteProcessMemory. (0x12B)
+[0520/153420.860:ERROR:process_memory_win.cc(73)] ReadMemory at 0x4d420a7000 of 852 bytes failed: Solo se completó una parte de una solicitud ReadProcessMemory o WriteProcessMemory. (0x12B)
+[0520/153420.860:ERROR:process_memory_win.cc(73)] ReadMemory at 0x4d420cc000 of 6024 bytes failed: Solo se completó una parte de una solicitud ReadProcessMemory o WriteProcessMemory. (0x12B)
+[0520/153420.860:ERROR:process_memory_win.cc(73)] ReadMemory at 0x1f0979e0fe0 of 5932 bytes failed: Solo se completó una parte de una solicitud ReadProcessMemory o WriteProcessMemory. (0x12B)
+[0520/162414.200:ERROR:process_reader_win.cc(151)] SuspendThread: Acceso denegado. (0x5)
+[0520/162414.208:ERROR:process_reader_win.cc(151)] SuspendThread: Acceso denegado. (0x5)
+[0520/162414.437:ERROR:process_reader_win.cc(151)] SuspendThread: Acceso denegado. (0x5)
+[0520/162414.437:ERROR:process_reader_win.cc(151)] SuspendThread: Acceso denegado. (0x5)

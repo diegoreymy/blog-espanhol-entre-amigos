@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PostCardComponent } from './post-card.component';
 import { IPosts } from '../../models/IPosts.model';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 const post: IPosts = {
   id: 1,
@@ -16,7 +18,8 @@ describe('PostCardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostCardComponent ]
+      declarations: [ PostCardComponent ],
+      imports: [ RouterTestingModule ]
     })
     .compileComponents();
   }));

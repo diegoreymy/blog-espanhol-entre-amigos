@@ -1,18 +1,17 @@
 import { CounterDirective } from './counter.directive';
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
-import { ElementRef, Component, DebugElement } from '@angular/core';
+import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-test',
-  template: '<p [appCounter]="50">50+</p>'
+  template: '<p appCounter="2500">2500+</p>'
 })
-export class TestComponent { }
+class TestComponent { }
 
 describe('CounterDirective', () => {
 
   let fixture: ComponentFixture<TestComponent>;
-  let comp: TestComponent;
+  let component: TestComponent;
   let debugElement: DebugElement;
   let element: HTMLElement;
 
@@ -24,7 +23,7 @@ describe('CounterDirective', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestComponent);
-    comp = fixture.componentInstance;
+    component = fixture.componentInstance;
     debugElement = fixture.debugElement;
     element = debugElement.nativeElement;
   });
