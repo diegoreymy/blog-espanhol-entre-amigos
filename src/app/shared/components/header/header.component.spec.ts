@@ -28,4 +28,18 @@ describe('HeaderComponent', () => {
   it('should compile', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should toggleMenu when openMenu is false', () => {
+    component.openMenu = false;
+    component.toggleMenu();
+    expect(component.openMenu).toEqual(true);
+    expect(component.toggleMenu).toBeTruthy();
+  });
+
+  it('should toggleMenu when openMenu is true', () => {
+    component.openMenu = true;
+    component.toggleMenu();
+    expect(component.openMenu).toEqual(false);
+    expect(component.toggleMenu).toBeTruthy();
+  });
 });

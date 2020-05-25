@@ -15,6 +15,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { MaterialModule } from '../../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AboutEspanholEntreAmigosComponent } from './components/about-espanhol-entre-amigos/about-espanhol-entre-amigos.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AboutEspanholEntreAmigosComponent } from './components/about-espanhol-e
     HomeRoutingModule,
     FontAwesomeModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class HomeModule { }

@@ -1,5 +1,5 @@
 <ul class="reviews-list">
     <li class="reviews-item" *ngFor="let review of reviews" tabindex="0">
-        <app-reviews-card class="card" [review]="review" [loadAll]="loadAll"></app-reviews-card>
+        <app-reviews-card class="card" [review]="review" [loadAll]="loadAll" (seeMoreId)="onSeeMoreId($event)" [seeMore]="review.id == seeMoreId"></app-reviews-card>
     </li>
 </ul>

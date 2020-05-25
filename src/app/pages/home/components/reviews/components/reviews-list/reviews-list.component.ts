@@ -10,5 +10,9 @@ export class ReviewsListComponent {
 
   @Input() reviews: IReview[];
   @Input() loadAll: boolean;
+  seeMoreId: number;
 
+  onSeeMoreId(id: number) {
+    this.seeMoreId = id;
+  }
 }

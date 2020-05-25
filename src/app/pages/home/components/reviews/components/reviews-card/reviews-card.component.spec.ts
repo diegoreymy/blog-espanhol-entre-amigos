@@ -33,4 +33,17 @@ describe('ReviewsCardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should openSeeMore when seeMore is false', () => {
+    component.seeMore = false;
+    component.openSeeMore();
+    expect(component.seeMore).toEqual(true);
+  });
+
+  it('should openSeeMore when seeMore is true', () => {
+    component.seeMore = true;
+    component.openSeeMore();
+    expect(component.seeMore).toEqual(false);
+  });
+
 });

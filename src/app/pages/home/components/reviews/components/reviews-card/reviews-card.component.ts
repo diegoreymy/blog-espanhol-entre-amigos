@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { faQuoteRight, faQuoteLeft, faStar } from '@fortawesome/free-solid-svg-icons';
 import { IReview } from '../../models/iReview.model';
@@ -12,7 +12,8 @@ export class ReviewsCardComponent {
 
   @Input() review: IReview;
   @Input() loadAll: boolean;
-  seeMore = false;
+  @Input() seeMore = false;
+  @Output() seeMoreId = new EventEmitter<number>();
 
   icons = {
     faQuoteRight,
@@ -20,15 +21,8 @@ export class ReviewsCardComponent {
     faStar
   };
 
-  constructor(
-    private document: ElementRef
-  ) { }
-
   openSeeMore() {
-    const container = this.document.nativeElement.parentElement.parentElement.querySelector('p.see-more');
-    if (container && !this.seeMore) {
-      container.click();
-    }
+    this.seeMoreId.emit(this.review.id);
     this.seeMore = !this.seeMore;
   }
 }

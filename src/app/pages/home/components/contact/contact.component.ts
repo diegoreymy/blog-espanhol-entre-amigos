@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { ContactService } from 'src/app/shared/services/contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -17,7 +18,8 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private contactService: ContactService
   ) { }
 
   ngOnInit() {
@@ -43,9 +45,9 @@ export class ContactComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.textButton = 'Enviando...';
     if (this.form.valid) {
-      this.http.post('https://espanholentreamigos.com.br/assets/mail/email.php', this.form.value).subscribe(() => {
+      this.textButton = 'Enviando...';
+      this.contactService.sendEmail(this.form.value).subscribe(() => {
         this.submitted = true;
         this.textButton = 'Su mensaje ha sido enviado';
         setTimeout(() => {

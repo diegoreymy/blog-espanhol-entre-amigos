@@ -25,7 +25,7 @@ describe('PostPageComponent', () => {
       imports: [ HttpClientTestingModule, FontAwesomeModule ],
       declarations: [ PostPageComponent, PostDetailComponent, BlogSidebarComponent ],
       providers: [
-        { provide: ActivatedRoute,  useValue: { fragment: of({ id: '1' })}},
+        { provide: ActivatedRoute, useValue: { fragment: of({ id: '1' })}},
         { provide: BlogService, useValue: mockBlogService }
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -17,15 +17,8 @@
     <p class="assign-text"><img src="assets/images/marca/firma.png" alt="Firma Marioly Guerrero"></p>
     <div class="post-social-share-buttons">
         <p>Si te gustó este artículo, compártelo! </p>
-        <share-buttons [theme]="'material-dark'" [include]="[
-        'facebook',
-        'twitter',
-        'linkedin',
-        'telegram',
-        'messenger',
-        'whatsapp',
-        'email',
-        'print'
-      ]" [show]="8" [url]="'https://www.espanholentreamigos.com.br/blog/' + post.slug" [title]="'Titulo del post'" [description]="post.title"></share-buttons>
+        <app-share-buttons [url]="'https://www.espanholentreamigos.com.br/blog/' + post.slug"
+            [title]="'Titulo del post'" [description]="post.title" [image]="post.horizontalImage" *ngIf="post">
+        </app-share-buttons>
     </div>
 </div>

@@ -1,0 +1,5 @@
+<div class="share-buttons-container">
+    <button *ngFor="let item of socialNetworksToShare" class="share-button-item {{item}}" (click)="share(item)">
+        <fa-icon [icon]="icons[item]"></fa-icon>
+    </button>
+</div>

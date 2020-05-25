@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PostDetailComponent } from './post-detail.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('PostDetailComponent', () => {
   let component: PostDetailComponent;
@@ -11,7 +12,7 @@ describe('PostDetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ PostDetailComponent ],
-      imports: [ RouterTestingModule ],
+      imports: [ RouterTestingModule, FontAwesomeModule ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();

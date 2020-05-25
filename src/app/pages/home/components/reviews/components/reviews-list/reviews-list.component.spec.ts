@@ -22,4 +22,9 @@ describe('ReviewsListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should onSeeMoreId', () => {
+    component.onSeeMoreId(1);
+    expect(component.seeMoreId).toEqual(1);
+  });
 });

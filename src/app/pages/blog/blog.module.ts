@@ -8,8 +8,8 @@ import { PostCardListComponent } from './components/post-card-list/post-card-lis
 import { BlogSidebarComponent } from './components/blog-sidebar/blog-sidebar.component';
 import { PostPageComponent } from './components/post-page/post-page.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
-import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
-import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -24,8 +24,8 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
   imports: [
     CommonModule,
     BlogRoutingModule,
-    ShareButtonsModule,
-    ShareIconsModule.forRoot()
+    SharedModule,
+    FontAwesomeModule,
   ]
 })
 export class BlogModule { }

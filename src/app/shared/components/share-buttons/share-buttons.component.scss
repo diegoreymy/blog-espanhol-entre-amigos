@@ -1,0 +1,42 @@
+$primary-color: #5ce1e6;
+$secondary-color: #666;
+$optional-color: #fff;
+
+.share-buttons-container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    .share-button-item {
+        background-color: $secondary-color;
+        color: $primary-color;
+        font-size: 1.25rem;
+        margin-right: 10px;
+        border-radius: 2px;
+        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        transition: background 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        position: relative;
+        outline: 0;
+        min-width: 60px;
+        height: 40px;
+        border: none;
+        border-radius: 1px;
+        padding: 0;
+        &.facebook {
+            background-color: #4267B2;
+            color: #fff;
+        }
+        &.twitter {
+            background-color: #00acee;
+            color: #fff;
+        }
+        &.linkedin {
+            background-color: #006fa6;
+            color: #fff;
+        }
+        &.whatsapp {
+            background-color: #25D366;
+            color: #fff;
+        }
+    }
+}
