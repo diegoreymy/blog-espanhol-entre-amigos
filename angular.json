@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/espanhol-entre-amigos",
+            "outputPath": "dist/espanhol-entre-amigos/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -128,6 +128,53 @@
             "production": {
               "devServerTarget": "espanhol-entre-amigos:serve:production"
             }
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/espanhol-entre-amigos/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "espanhol-entre-amigos:build",
+            "serverTarget": "espanhol-entre-amigos:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "espanhol-entre-amigos:build:production",
+              "serverTarget": "espanhol-entre-amigos:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "espanhol-entre-amigos:build:production",
+            "serverTarget": "espanhol-entre-amigos:server:production",
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }

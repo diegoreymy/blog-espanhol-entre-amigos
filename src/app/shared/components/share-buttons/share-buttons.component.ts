@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject, PLATFORM_ID } from '@angular/core';
 import { faWhatsapp, faLinkedinIn, faTwitter, faFacebookF } from '@fortawesome/free-brands-svg-icons';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-share-buttons',
@@ -22,24 +23,28 @@ export class ShareButtonsComponent implements OnInit {
     whatsapp: faWhatsapp,
   };
 
-  constructor() { }
+  constructor(// tslint:disable-next-line: ban-types
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) { }
 
   ngOnInit(): void { }
 
   share(item: string) {
-    switch (item) {
-      case 'facebook':
-        this.shareWithFacebook();
-        break;
-      case 'twitter':
-        this.shareWithTwitter();
-        break;
-      case 'linkedin':
-        this.shareWithlinkedin();
-        break;
-      case 'whatsapp':
-        this.shareWithWhatsapp();
-        break;
+    if (isPlatformBrowser(this.platformId)) {
+      switch (item) {
+        case 'facebook':
+          this.shareWithFacebook();
+          break;
+        case 'twitter':
+          this.shareWithTwitter();
+          break;
+        case 'linkedin':
+          this.shareWithlinkedin();
+          break;
+        case 'whatsapp':
+          this.shareWithWhatsapp();
+          break;
+      }
     }
   }
 

@@ -1,9 +1,10 @@
-import { Component, OnInit, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, ElementRef, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { faAngleLeft, faAngleRight, faCircle as solidCircle } from '@fortawesome/free-solid-svg-icons';
 import { faCircle as regularCircle } from '@fortawesome/free-regular-svg-icons';
 import { ReviewsService } from './services/reviews.service';
 import { Observable, Subscription, fromEvent } from 'rxjs';
 import { IReview } from './models/iReview.model';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-reviews',
@@ -19,7 +20,7 @@ export class ReviewsComponent implements OnInit, OnDestroy {
   reviewsService$: Observable<IReview[]>;
   subscriptions = new Subscription();
   reviews: IReview[] = [];
-  size: number = window.innerWidth;
+  size: number;
   totalPagesArray = [];
   reviewsBox: HTMLDivElement;
   widthItem: number;
@@ -35,21 +36,25 @@ export class ReviewsComponent implements OnInit, OnDestroy {
 
   constructor(
     private element: ElementRef,
-    private reviewsService: ReviewsService
-  ) {
+    private reviewsService: ReviewsService,
+    // tslint:disable-next-line: ban-types
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) { }
+
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.size = window.innerWidth;
+      this.subscriptions.add(fromEvent(window, 'resize').subscribe((event: Event) => {
+        this.getPageWidth(event);
+        this.setTotalPages();
+      }));
+    }
     this.subscriptions.add(this.reviewsService.getReviews().subscribe(reviews => {
       this.reviews = reviews;
       this.setTotalPages();
       this.reviewsBox = this.element.nativeElement.querySelector('.app-reviews-list');
       this.widthItem = this.reviewsBox.clientWidth;
     }));
-    this.subscriptions.add(fromEvent(window, 'resize').subscribe((event: Event) => {
-      this.getPageWidth(event);
-      this.setTotalPages();
-    }));
-  }
-
-  ngOnInit() {
   }
 
   ngOnDestroy() {

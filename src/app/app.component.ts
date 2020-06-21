@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, PLATFORM_ID, Inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 import { filter } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
+import { isPlatformBrowser } from '@angular/common';
 
 declare var gtag;
 
@@ -15,19 +16,23 @@ export class AppComponent {
 
   constructor(
     private router: Router,
-    private titleService: Title
+    private titleService: Title,
+    // tslint:disable-next-line: ban-types
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {
-    const navEndEvents$ = this.router.events
-      .pipe(
-        filter(event => event instanceof NavigationEnd)
-      );
-    navEndEvents$.subscribe((event: NavigationEnd) => {
-      gtag('config', 'G-0G922NQS1C', {
-        page_path: event.urlAfterRedirects
+    if (isPlatformBrowser(this.platformId)) {
+      const navEndEvents$ = this.router.events
+        .pipe(
+          filter(event => event instanceof NavigationEnd)
+        );
+      navEndEvents$.subscribe((event: NavigationEnd) => {
+        gtag('config', 'G-0G922NQS1C', {
+          page_path: event.urlAfterRedirects
+        });
+        this.titleService.setTitle(this.setTitle(event.urlAfterRedirects));
+        window.scrollTo(0, 0);
       });
-      this.titleService.setTitle(this.setTitle(event.urlAfterRedirects));
-      window.scrollTo(0, 0);
-    });
+    }
   }
 
   setTitle(url: string): string {
