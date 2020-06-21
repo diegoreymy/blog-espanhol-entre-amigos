@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run build:ssr && npm run serve:ssr",
+    "start": "ng build --prod && ng run espanhol-entre-amigos:server:production && node dist/espanhol-entre-amigos/server/main.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
