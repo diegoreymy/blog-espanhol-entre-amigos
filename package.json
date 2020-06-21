@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node dist/espanhol-entre-amigos/server/main.js",
+    "start": "npm run build:ssr && npm run serve:ssr",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -11,8 +11,7 @@
     "dev:ssr": "ng run espanhol-entre-amigos:serve-ssr",
     "serve:ssr": "node dist/espanhol-entre-amigos/server/main.js",
     "build:ssr": "ng build --prod && ng run espanhol-entre-amigos:server:production",
-    "prerender": "ng run espanhol-entre-amigos:prerender",
-    "postinstall": "npm run build:ssr"
+    "prerender": "ng run espanhol-entre-amigos:prerender"
   },
   "private": true,
   "dependencies": {
