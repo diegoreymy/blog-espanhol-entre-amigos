@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "espanol-entre-amigos": {
+      "hosting": {
+        "espanhol-entre-amigos": [
+          "espanol-entre-amigos"
+        ]
+      }
+    }
+  }
+}
