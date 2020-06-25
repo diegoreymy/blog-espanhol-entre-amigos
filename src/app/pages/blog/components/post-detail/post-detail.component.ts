@@ -32,10 +32,10 @@ export class PostDetailComponent implements OnChanges {
     this.meta.updateTag({ property: 'og:url', content: `https://espanholentreamigos.com.br/blog/${this.post.slug}` });
     this.meta.updateTag({ property: 'og:type', content: `website` });
     this.meta.updateTag({ property: 'og:description', content: this.post.title });
-    this.meta.updateTag({ property: 'twitter:title', content: `Espanhol entre Amigos - ${this.post.title}` });
-    this.meta.updateTag({ property: 'twitter:image', content: `https://espanholentreamigos.com.br/${this.post.facebookImage}` });
-    this.meta.updateTag({ property: 'twitter:description', content: `Espanhol entre Amigos - ${this.post.title}` });
-    this.meta.updateTag({ property: 'twitter:domain', content: `https://espanholentreamigos.com.br/blog/${this.post.slug}` });
-    this.meta.updateTag({ property: 'twitter:card', content: `summary_large_image` });
+    this.meta.updateTag({ name: 'twitter:title', content: `Espanhol entre Amigos - ${this.post.title}` });
+    this.meta.updateTag({ name: 'twitter:image', content: `https://espanholentreamigos.com.br/${this.post.facebookImage}` });
+    this.meta.updateTag({ name: 'twitter:description', content: `Espanhol entre Amigos - ${this.post.title}` });
+    this.meta.updateTag({ name: 'twitter:domain', content: `https://espanholentreamigos.com.br/blog/${this.post.slug}` });
+    this.meta.updateTag({ name: 'twitter:card', content: `summary_large_image` });
   }
 }
