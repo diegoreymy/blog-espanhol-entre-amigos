@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, Input, Inject, PLATFORM_ID, HostListener } from '@angular/core';
 import { faWhatsapp, faLinkedinIn, faTwitter, faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import { isPlatformBrowser } from '@angular/common';
+import { Subscription, fromEvent } from 'rxjs';
+import Utils from '../../utils';
 
 @Component({
   selector: 'app-share-buttons',
@@ -23,11 +25,21 @@ export class ShareButtonsComponent implements OnInit {
     whatsapp: faWhatsapp,
   };
 
+  size: number;
+  subscriptions = new Subscription();
+
   constructor(// tslint:disable-next-line: ban-types
     @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.size = window.innerWidth;
+      this.subscriptions.add(fromEvent(window, 'resize').subscribe((event: Event) => {
+        this.getPageWidth(event);
+      }));
+    }
+  }
 
   share(item: string) {
     if (isPlatformBrowser(this.platformId)) {
@@ -49,12 +61,12 @@ export class ShareButtonsComponent implements OnInit {
   }
 
   shareWithFacebook() {
-    const url = `https://www.facebook.com/sharer.php?u=${this.url}`;
+    const url = `https://www.facebook.com/sharer/sharer.php?u=${this.url}`;
     window.open(url, 'Espanhol entre Amigos', 'height=500,width=520,top=200,left=300,resizable');
   }
 
   shareWithTwitter() {
-    const url = `https://twitter.com/share?url=${this.url}`;
+    const url = `https://twitter.com/intent/tweet?url=${this.url}`;
     window.open(url, 'Espanhol entre Amigos');
   }
 
@@ -64,7 +76,19 @@ export class ShareButtonsComponent implements OnInit {
   }
 
   shareWithWhatsapp() {
-    const url = `https://web.whatsapp.com/send?text=${this.url}`;
+    let url = `https://web.whatsapp.com/send?text=${this.url}`;
+    if (this.size < 986) {
+      if (Utils.getMobileOperatingSystem() === 'Android') {
+        url = `whatsapp://send?text=${this.url}`;
+      }
+      if (Utils.getMobileOperatingSystem() === 'iOS') {
+        url = `https://api.whatsapp.com/send?text=${this.url}`;
+      }
+    }
     window.open(url, 'Espanhol entre Amigos');
+  }
+
+  getPageWidth(event) {
+    this.size = event.target.innerWidth;
   }
 }
