@@ -27,13 +27,13 @@ export class PostDetailComponent implements OnChanges {
 
   updateMetas() {
     this.meta.updateTag({ name: 'description', content: this.post.title });
-    this.meta.updateTag({ property: 'og:image', content: `https://espanholentreamigos.com.br/${this.post.horizontalImage}` });
+    this.meta.updateTag({ property: 'og:image', content: `https://espanholentreamigos.com.br/${this.post.horizontalImage}-facebook` });
     this.meta.updateTag({ property: 'og:title', content: `Espanhol entre Amigos - ${this.post.title}` });
     this.meta.updateTag({ property: 'og:url', content: `https://espanholentreamigos.com.br/blog/${this.post.slug}` });
     this.meta.updateTag({ property: 'og:type', content: `website` });
     this.meta.updateTag({ property: 'og:description', content: this.post.title });
     this.meta.updateTag({ property: 'twitter:title', content: `Espanhol entre Amigos - ${this.post.title}` });
-    this.meta.updateTag({ property: 'twitter:image', content: `https://espanholentreamigos.com.br/${this.post.horizontalImage}` });
+    this.meta.updateTag({ property: 'twitter:image', content: `https://espanholentreamigos.com.br/${this.post.horizontalImage}-facebook` });
     this.meta.updateTag({ property: 'twitter:description', content: `Espanhol entre Amigos - ${this.post.title}` });
     this.meta.updateTag({ property: 'twitter:domain', content: `https://espanholentreamigos.com.br/blog/${this.post.slug}` });
     this.meta.updateTag({ property: 'twitter:card', content: `summary_large_image` });

@@ -49,7 +49,7 @@ export class ShareButtonsComponent implements OnInit {
   }
 
   shareWithFacebook() {
-    const url = `http://www.facebook.com/sharer.php?u=${this.url}`;
+    const url = `https://www.facebook.com/sharer/sharer.php?u=${this.url}`;
     window.open(url, 'Espanhol entre Amigos', 'height=500,width=520,top=200,left=300,resizable');
   }
 
