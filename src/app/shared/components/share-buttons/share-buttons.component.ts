@@ -49,17 +49,17 @@ export class ShareButtonsComponent implements OnInit {
   }
 
   shareWithFacebook() {
-    const url = `https://www.facebook.com/sharer/sharer.php?u=${this.url}`;
+    const url = `https://www.facebook.com/sharer.php?u=${this.url}`;
     window.open(url, 'Espanhol entre Amigos', 'height=500,width=520,top=200,left=300,resizable');
   }
 
   shareWithTwitter() {
-    const url = `http://twitter.com/share?url=${this.url}`;
+    const url = `https://twitter.com/share?url=${this.url}`;
     window.open(url, 'Espanhol entre Amigos');
   }
 
   shareWithlinkedin() {
-    const url = `http://www.linkedin.com/shareArticle?mini=true&url=${this.url}`;
+    const url = `https://www.linkedin.com/shareArticle?mini=true&url=${this.url}`;
     window.open(url, 'Espanhol entre Amigos', 'height=500,width=520,top=200,left=300,resizable');
   }
 
