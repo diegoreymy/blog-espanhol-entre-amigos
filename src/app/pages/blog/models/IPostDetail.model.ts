@@ -4,6 +4,7 @@ export interface IPostDetail {
     slug: string;
     date: string;
     horizontalImage: string;
+    facebookImage: string;
     squareImage: string;
     content: string;
 }

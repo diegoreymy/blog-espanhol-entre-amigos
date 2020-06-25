@@ -12,6 +12,7 @@ const expectedPostDetails: IPostDetail = {
   slug: 'slug',
   date: '01/01/2020',
   horizontalImage: '/image.png',
+  facebookImage: '/image.jpg',
   squareImage: '/image.png',
   content: 'content'
 };
