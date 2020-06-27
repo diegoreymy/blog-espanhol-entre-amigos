@@ -26,19 +26,5 @@
         ]
       }
     }
-  ],
-  "dataGroups": [
-    {
-      "name": "api",
-      "urls": [
-        "https://espanol-entre-amigos.firebaseio.com/**"
-      ],
-      "cacheConfig": {
-        "maxSize": 2,
-        "maxAge": "1d",
-        "strategy": "performance",
-        "timeout": "2s"
-      }
-    }
   ]
 }
