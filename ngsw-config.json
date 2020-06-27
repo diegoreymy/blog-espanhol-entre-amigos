@@ -14,7 +14,8 @@
           "/*.js"
         ]
       }
-    }, {
+    },
+    {
       "name": "assets",
       "installMode": "lazy",
       "updateMode": "prefetch",
@@ -23,6 +24,20 @@
           "/assets/**",
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "api",
+      "urls": [
+        "https://espanol-entre-amigos.firebaseio.com/**"
+      ],
+      "cacheConfig": {
+        "maxSize": 2,
+        "maxAge": "1d",
+        "strategy": "performance",
+        "timeout": "2s"
       }
     }
   ]
