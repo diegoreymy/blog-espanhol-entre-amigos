@@ -28,7 +28,8 @@
               "src/assets",
               "src/manifest.webmanifest",
               "src/robots.txt",
-              "src/sitemap.xml"
+              "src/sitemap.xml",
+              "src/firebase-messaging-sw.js"
             ],
             "styles": [
               "src/styles.scss"

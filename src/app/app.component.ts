@@ -1,11 +1,16 @@
 import { Component, PLATFORM_ID, Inject, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
-import { filter } from 'rxjs/operators';
+import { filter, tap } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
 import { isPlatformBrowser } from '@angular/common';
+import { AngularFireMessaging } from '@angular/fire/messaging';
 
 declare var gtag;
+
+interface Token {
+  token: string;
+}
 
 @Component({
   selector: 'app-root',
@@ -18,13 +23,16 @@ export class AppComponent implements OnInit {
     private router: Router,
     private titleService: Title,
     private swUpdate: SwUpdate,
+    private messaging: AngularFireMessaging,
     @Inject(PLATFORM_ID) private platformId: any
-  ) { }
+  ) {}
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       this.setAnalytics();
       this.updatePWA();
+      this.requestPermission();
+      this.listenNotifications();
     }
   }
 
@@ -54,5 +62,13 @@ export class AppComponent implements OnInit {
       this.titleService.setTitle(this.setTitle(event.urlAfterRedirects));
       window.scrollTo(0, 0);
     });
+  }
+
+  requestPermission() {
+    this.messaging.requestToken.subscribe(console.log);
+  }
+
+  listenNotifications() {
+    this.messaging.messages.subscribe(console.log);
   }
 }
