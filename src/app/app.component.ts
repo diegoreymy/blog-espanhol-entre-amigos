@@ -27,16 +27,13 @@ export class AppComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       this.setAnalytics();
       this.updatePWA();
-      this.requestPermission();
+      this.requestPermissionNotifications();
       this.listenNotifications();
     }
   }
 
   updatePWA() {
-    this.swUpdate.available.subscribe(value => {
-      console.log('update:', value);
-      window.location.reload();
-    });
+    this.swUpdate.available.subscribe(() => window.location.reload());
   }
 
   setTitle(url: string): string {
@@ -60,7 +57,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  requestPermission() {
+  requestPermissionNotifications() {
     this.messaging.requestToken.subscribe(console.log);
   }
 
