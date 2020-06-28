@@ -1,16 +1,12 @@
 import { Component, PLATFORM_ID, Inject, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
-import { filter, tap } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
 import { isPlatformBrowser } from '@angular/common';
 import { AngularFireMessaging } from '@angular/fire/messaging';
 
 declare var gtag;
-
-interface Token {
-  token: string;
-}
 
 @Component({
   selector: 'app-root',
