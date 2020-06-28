@@ -36,4 +36,32 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
+  it('should ngOnInit fuction', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    app.ngOnInit();
+    expect(app).toBeTruthy();
+  });
+
+  it('should updatePWA fuction', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    app.updatePWA();
+    expect(app).toBeTruthy();
+  });
+
+  it('should setTitle fuction', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    app.setTitle('https://espanholentreamigos.com.br/blog/10-consejos-para-aprender-espanol-rapido-y-divertido');
+    expect(app).toBeTruthy();
+  });
+
+  it('should setAnalytics fuction', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    app.setAnalytics();
+    expect(app).toBeTruthy();
+  });
+
 });
