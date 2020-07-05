@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { BlogService } from '../../services/blog.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { IPostDetail } from '../../models/IPostDetail.model';
-import { IPosts } from '../../models/IPosts.model';
+import { IPost } from '../../models/IPost.model';
 
 @Component({
   selector: 'app-post-page',
@@ -12,7 +11,7 @@ import { IPosts } from '../../models/IPosts.model';
 })
 export class PostPageComponent {
 
-  postDetail$: Observable<IPostDetail>;
+  postDetail$: Observable<IPost>;
   slug: string;
   id: string;
 
@@ -27,8 +26,8 @@ export class PostPageComponent {
       } else {
         this.slug = this.route.snapshot.paramMap.get('slug');
         this.blogService.getPosts().
-        subscribe((posts: IPosts[]) => {
-          posts.map((post: IPosts) => {
+        subscribe((posts: IPost[]) => {
+          posts.map((post: IPost) => {
             if ( post.slug === this.slug ) {
               this.id = String(post.id);
               this.postDetail$ = this.blogService.getPostDetails(this.id);

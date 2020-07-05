@@ -1,10 +1,9 @@
-import { Component, PLATFORM_ID, Inject, OnInit } from '@angular/core';
+import { Component, PLATFORM_ID, Inject, AfterViewInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
 import { filter } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
 import { isPlatformBrowser } from '@angular/common';
-import { AngularFireMessaging } from '@angular/fire/messaging';
 
 declare var gtag;
 
@@ -13,22 +12,19 @@ declare var gtag;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements AfterViewInit {
 
   constructor(
     private router: Router,
     private titleService: Title,
     private swUpdate: SwUpdate,
-    private messaging: AngularFireMessaging,
     @Inject(PLATFORM_ID) private platformId: any
   ) {}
 
-  ngOnInit() {
+  ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
-      this.setAnalytics();
       this.updatePWA();
-      this.requestPermissionNotifications();
-      this.listenNotifications();
+      this.setAnalytics();
     }
   }
 
@@ -57,11 +53,4 @@ export class AppComponent implements OnInit {
     });
   }
 
-  requestPermissionNotifications() {
-    this.messaging.requestToken.subscribe(console.log);
-  }
-
-  listenNotifications() {
-    this.messaging.messages.subscribe(console.log);
-  }
 }

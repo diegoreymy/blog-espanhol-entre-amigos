@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IPosts } from '../../models/IPosts.model';
+import { IPost } from '../../models/IPost.model';
 
 @Component({
   selector: 'app-post-card-list',
@@ -8,6 +8,6 @@ import { IPosts } from '../../models/IPosts.model';
 })
 export class PostCardListComponent {
 
-  @Input() posts: IPosts[];
+  @Input() posts: IPost[];
 
 }

@@ -53,6 +53,9 @@ $optional-color: #fff;
         margin-top: 60px;
       }
     }
+    pre {
+      display: none;
+    }
   }
   .assign-text {
     width: 100%;
@@ -125,3 +128,22 @@ $optional-color: #fff;
     margin: 1rem 2rem;
   }
 }
+
+.permission-notification {
+  .btn-notification {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    .icon {
+      font-size: 24px;
+      color: $primary-color;
+      @media only screen and (min-width: 997px) and (max-width: 1399px){
+        font-size: 21px;
+      }
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+  }
+}
+

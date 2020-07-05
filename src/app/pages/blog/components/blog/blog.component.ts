@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IPosts } from '../../models/IPosts.model';
+import { IPost } from '../../models/IPost.model';
 import { BlogService } from '../../services/blog.service';
 import { Meta } from '@angular/platform-browser';
 
@@ -11,7 +11,7 @@ import { Meta } from '@angular/platform-browser';
 })
 export class BlogComponent implements OnInit {
 
-  posts$: Observable<IPosts[]>;
+  posts$: Observable<IPost[]>;
 
   constructor(
     private blogService: BlogService,

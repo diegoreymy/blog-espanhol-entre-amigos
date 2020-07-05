@@ -9,10 +9,13 @@ import { PostDetailComponent } from '../post-detail/post-detail.component';
 import { BlogSidebarComponent } from '../blog-sidebar/blog-sidebar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
 
 const mockBlogService = {
-  getPosts: () => {},
-  getPostDetails: () => {},
+  getPosts: () => { },
+  getPostDetails: () => { },
 };
 
 
@@ -22,15 +25,20 @@ describe('PostPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule, FontAwesomeModule ],
-      declarations: [ PostPageComponent, PostDetailComponent, BlogSidebarComponent ],
+      imports: [
+        HttpClientTestingModule,
+        FontAwesomeModule,
+        AngularFireMessagingModule,
+        AngularFireModule.initializeApp(environment.firebase),
+      ],
+      declarations: [PostPageComponent, PostDetailComponent, BlogSidebarComponent],
       providers: [
-        { provide: ActivatedRoute, useValue: { fragment: of({ id: '1' })}},
+        { provide: ActivatedRoute, useValue: { fragment: of({ id: '1' }) } },
         { provide: BlogService, useValue: mockBlogService }
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

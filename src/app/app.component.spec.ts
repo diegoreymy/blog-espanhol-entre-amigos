@@ -5,9 +5,6 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { SwUpdate, ServiceWorkerModule } from '@angular/service-worker';
-import { AngularFireMessagingModule } from '@angular/fire/messaging';
-import { AngularFireModule } from '@angular/fire';
-import { environment } from 'src/environments/environment';
 
 const mockSwUpdateInstance = new SwUpdate({isEnabled: false} as any);
 
@@ -17,8 +14,6 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         ServiceWorkerModule.register('', {enabled: false}),
-        AngularFireMessagingModule,
-        AngularFireModule.initializeApp(environment.firebase),
       ],
       declarations: [
         AppComponent,
@@ -36,10 +31,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should ngOnInit fuction', () => {
+  it('should ngAfterViewInit fuction', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    app.ngOnInit();
+    app.ngAfterViewInit();
     expect(app).toBeTruthy();
   });
 

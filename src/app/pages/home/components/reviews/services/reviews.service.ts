@@ -9,7 +9,7 @@ import { environment } from '../../../../../../environments/environment';
 })
 export class ReviewsService {
 
-  private API_URL = environment.API_URL;
+  private API_URL = environment.API_URL_FIREBASE;
 
   constructor(private http: HttpClient) { }
 

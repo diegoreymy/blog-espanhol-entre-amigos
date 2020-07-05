@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IPosts } from '../models/IPosts.model';
 import { HttpClient } from '@angular/common/http';
-import { IPostDetail } from '../models/IPostDetail.model';
+import { IPost } from '../models/IPost.model';
 import { environment } from '../../../../environments/environment';
 
 @Injectable({
@@ -14,11 +13,11 @@ export class BlogService {
 
   constructor(private http: HttpClient) { }
 
-  public getPosts(): Observable<IPosts[]> {
-    return this.http.get<IPosts[]>(`${this.API_URL}/posts.json`);
+  public getPosts(): Observable<IPost[]> {
+    return this.http.get<IPost[]>(`${this.API_URL}/posts`);
   }
 
-  public getPostDetails(id: string): Observable<IPostDetail> {
-    return this.http.get<IPostDetail>(`${this.API_URL}/post/${id}.json`);
+  public getPostDetails(id: string): Observable<IPost> {
+    return this.http.get<IPost>(`${this.API_URL}/posts/${id}`);
   }
 }
