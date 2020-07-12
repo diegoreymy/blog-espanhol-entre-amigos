@@ -45,13 +45,13 @@ export class PostDetailComponent implements OnInit, OnChanges {
   updateMetas() {
     this.meta.updateTag({ name: 'description', content: this.post.title.rendered });
     this.meta.updateTag({ property: 'og:image', content: `${this.imagesPost.facebook}` });
-    this.meta.updateTag({ property: 'og:title', content: `Espanhol entre Amigos - ${this.post.title}` });
+    this.meta.updateTag({ property: 'og:title', content: `Espanhol entre Amigos - ${this.post.title.rendered}` });
     this.meta.updateTag({ property: 'og:url', content: `https://espanholentreamigos.com.br/blog/${this.post.slug}` });
     this.meta.updateTag({ property: 'og:type', content: `website` });
     this.meta.updateTag({ property: 'og:description', content: this.post.title.rendered });
-    this.meta.updateTag({ name: 'twitter:title', content: `Espanhol entre Amigos - ${this.post.title}` });
+    this.meta.updateTag({ name: 'twitter:title', content: `Espanhol entre Amigos - ${this.post.title.rendered}` });
     this.meta.updateTag({ name: 'twitter:image', content: `${this.imagesPost.facebook}` });
-    this.meta.updateTag({ name: 'twitter:description', content: `Espanhol entre Amigos - ${this.post.title}` });
+    this.meta.updateTag({ name: 'twitter:description', content: `Espanhol entre Amigos - ${this.post.title.rendered}` });
     this.meta.updateTag({ name: 'twitter:domain', content: `https://espanholentreamigos.com.br/blog/${this.post.slug}` });
     this.meta.updateTag({ name: 'twitter:card', content: `summary_large_image` });
   }
