@@ -1,9 +1,10 @@
-import { Component, Input, ViewEncapsulation, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, ViewEncapsulation, OnChanges, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { faArrowLeft, faBell } from '@fortawesome/free-solid-svg-icons';
 import { IPost } from '../../models/IPost.model';
 import { Meta } from '@angular/platform-browser';
 import { IPostImages } from '../../models/IPostImages.model';
 import { AngularFireMessaging } from '@angular/fire/messaging';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-post-detail',
@@ -20,6 +21,7 @@ export class PostDetailComponent implements OnInit, OnChanges {
   constructor(
     private meta: Meta,
     private messaging: AngularFireMessaging,
+    @Inject(PLATFORM_ID) private platformId: any
   ) { }
 
   icons = {
@@ -28,7 +30,9 @@ export class PostDetailComponent implements OnInit, OnChanges {
   };
 
   ngOnInit() {
-    this.getToken();
+    if (isPlatformBrowser(this.platformId)) {
+      this.getToken();
+    }
   }
 
   ngOnChanges() {
