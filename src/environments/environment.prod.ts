@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
-  API_URL: 'https://espanol-entre-amigos.firebaseio.com',
+  API_URL_FIREBASE: 'https://espanol-entre-amigos.firebaseio.com',
+  API_URL: 'https://public-api.wordpress.com/wp/v2/sites/espanholentreamigos596581947.wordpress.com',
   firebase: {
     apiKey: 'AIzaSyAyTzXvUInb0aItW2KyVAlq5FzRQVSbxmY',
     authDomain: 'espanol-entre-amigos.firebaseapp.com',
