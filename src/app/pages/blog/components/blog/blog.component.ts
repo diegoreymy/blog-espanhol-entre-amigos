@@ -27,7 +27,7 @@ export class BlogComponent implements OnInit {
   ngOnInit() {
     this.metaService.addTags([
       {name: 'keywords', content: 'Español, Espanhol, Blog'},
-      {name: 'description', content: 'Blog de artigos relacionados ao ensino de espanhol para brasileiros'},
+      {name: 'description', content: 'Blog de artigos relacionados ao ensino de Espanhol para Brasileiros'},
       {name: 'robots', content: 'index, follow'}
     ]);
   }
