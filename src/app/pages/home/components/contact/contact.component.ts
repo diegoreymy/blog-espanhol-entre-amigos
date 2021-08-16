@@ -1,8 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { ContactService } from 'src/app/shared/services/contact.service';
+import { ContactService, IEmailData } from 'src/app/shared/services/contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -18,7 +17,6 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private http: HttpClient,
     private contactService: ContactService
   ) { }
 
@@ -45,6 +43,11 @@ export class ContactComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    const data: IEmailData = {
+      name: this.form.controls['name'].value,
+      _replyto: this.form.controls['email'].value,
+      message: this.form.controls['message'].value
+    }
     if (this.form.valid) {
       this.textButton = 'Enviando...';
       this.contactService.sendEmail(this.form.value).subscribe(() => {
