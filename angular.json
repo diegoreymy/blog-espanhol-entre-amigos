@@ -196,5 +196,8 @@
       }
     }
   },
-  "defaultProject": "espanhol-entre-amigos"
+  "defaultProject": "espanhol-entre-amigos",
+  "cli": {
+    "analytics": "fd5acce0-5382-421f-9add-779a79b52e7b"
+  }
 }

@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "espanhol-entre-amigos",
-      "public": "dist/espanhol-entre-amigos/dist/espanhol-entre-amigos/browser/",
+      "public": "dist/espanhol-entre-amigos/browser/",
       "ignore": [
         "firebase.json",
         "**/.*",
