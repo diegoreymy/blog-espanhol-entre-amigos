@@ -12,7 +12,7 @@ export default class Utils {
             return 'Android';
         }
 
-        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        if (/iPad|iPhone|iPod/.test(userAgent) && !(window as any).MSStream) {
             return 'iOS';
         }
 
