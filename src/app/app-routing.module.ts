@@ -26,7 +26,7 @@ const routes: Routes = [
     preloadingStrategy: PreloadAllModules,
     useHash: false,
     anchorScrolling: 'enabled',
-    initialNavigation: 'enabled'
+    initialNavigation: 'enabledBlocking'
 })],
   exports: [RouterModule]
 })

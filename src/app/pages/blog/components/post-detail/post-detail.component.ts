@@ -3,7 +3,7 @@ import { faArrowLeft, faBell } from '@fortawesome/free-solid-svg-icons';
 import { IPost } from '../../models/IPost.model';
 import { Meta } from '@angular/platform-browser';
 import { IPostImages } from '../../models/IPostImages.model';
-import { AngularFireMessaging } from '@angular/fire/messaging';
+import { Messaging, getToken, onMessage } from '@angular/fire/messaging';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -20,7 +20,7 @@ export class PostDetailComponent implements OnInit, OnChanges {
 
   constructor(
     private meta: Meta,
-    private messaging: AngularFireMessaging,
+    private messaging: Messaging,
     @Inject(PLATFORM_ID) private platformId: any
   ) { }
 
@@ -57,10 +57,16 @@ export class PostDetailComponent implements OnInit, OnChanges {
   }
 
   requestPermissionNotifications() {
-    this.messaging.requestToken.subscribe(token => {
-      if (token) {
-        localStorage.setItem('token', token);
-        this.getToken();
+    // Nueva forma de obtener el token de notificaciones push
+    Notification.requestPermission().then(permission => {
+      if (permission === 'granted') {
+        getToken(this.messaging, { vapidKey: 'TU_VAPID_KEY' })
+          .then(token => {
+            if (token) {
+              localStorage.setItem('token', token);
+              this.getToken();
+            }
+          });
       }
     });
   }
@@ -71,7 +77,10 @@ export class PostDetailComponent implements OnInit, OnChanges {
   }
 
   listenNotifications() {
-    this.messaging.messages.subscribe(console.log);
+    // Nueva forma de escuchar mensajes push
+    onMessage(this.messaging, payload => {
+      console.log(payload);
+    });
   }
 
   onClickGetNotification() {

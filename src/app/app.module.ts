@@ -9,8 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { SharedModule } from './shared/shared.module';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideMessaging, getMessaging } from '@angular/fire/messaging';
 
 @NgModule({
   declarations: [
@@ -22,8 +22,8 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging';
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireMessagingModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideMessaging(() => getMessaging()),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
