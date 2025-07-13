@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { ContactService, IEmailData } from 'src/app/shared/services/contact.service';
 
@@ -10,13 +10,13 @@ import { ContactService, IEmailData } from 'src/app/shared/services/contact.serv
 })
 export class ContactComponent implements OnInit, OnDestroy {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   submitted = false;
   textButton = 'Enviar';
   private unsubscribe = new Subject<void>();
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private contactService: ContactService
   ) { }
 
