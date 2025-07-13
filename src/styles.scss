@@ -1,7 +1,7 @@
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 
-$custom-typography: mat-typography-config($font-family: Raleway);
-@include mat-core($custom-typography);
+$custom-typography: mat.define-typography-config($font-family: Raleway);
+@include mat.core($custom-typography);
 
 $md-colorprimario: (
     50 : #ecfbfc,
@@ -37,10 +37,10 @@ $md-colorprimario: (
 );
 
 
-$custom-primary: mat-palette($md-colorprimario);
-$custom-accent: mat-palette($mat-amber);
-$custom-theme: mat-light-theme($custom-primary, $custom-accent);
-@include angular-material-theme($custom-theme);
+$custom-primary: mat.define-palette($md-colorprimario);
+$custom-accent: mat.define-palette(mat.$amber-palette);
+$custom-theme: mat.define-light-theme($custom-primary, $custom-accent);
+@include mat.all-component-themes($custom-theme);
 
 html,
 body {
