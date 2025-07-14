@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PostPageComponent } from './post-page.component';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ActivatedRoute, Params } from '@angular/router';
 import { of } from 'rxjs';
 import { BlogService } from '../../services/blog.service';
@@ -12,6 +12,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 const mockBlogService = {
   getPosts: () => { },
@@ -25,19 +26,18 @@ describe('PostPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule,
-        FontAwesomeModule,
+    declarations: [PostPageComponent, PostDetailComponent, BlogSidebarComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [FontAwesomeModule,
         AngularFireMessagingModule,
-        AngularFireModule.initializeApp(environment.firebase),
-      ],
-      declarations: [PostPageComponent, PostDetailComponent, BlogSidebarComponent],
-      providers: [
+        AngularFireModule.initializeApp(environment.firebase)],
+    providers: [
         { provide: ActivatedRoute, useValue: { fragment: of({ id: '1' }) } },
-        { provide: BlogService, useValue: mockBlogService }
-      ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
+        { provide: BlogService, useValue: mockBlogService },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+    ]
+})
       .compileComponents();
   }));
 

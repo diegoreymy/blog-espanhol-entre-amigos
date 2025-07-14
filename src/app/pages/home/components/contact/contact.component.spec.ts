@@ -3,10 +3,11 @@ import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core
 import { ContactComponent } from './contact.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ContactService } from 'src/app/shared/services/contact.service';
 import { of } from 'rxjs';
 import { IEmail } from 'src/app/shared/models/iEmail.model';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 const responseContactService = {email: 'diegoreymy@gmail.com', name: 'Diego', message: 'mensaje de prueba'};
 const requestContactService = {email: 'diegoreymy@gmail.com', name: 'Diego', message: 'mensaje de prueba'};
@@ -23,11 +24,11 @@ describe('ContactComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContactComponent ],
-      imports: [ ReactiveFormsModule, HttpClientTestingModule ],
-      providers: [ { provide: ContactService, useClass: MockContactService }],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
+    declarations: [ContactComponent],
+    schemas: [NO_ERRORS_SCHEMA],
+    imports: [ReactiveFormsModule],
+    providers: [{ provide: ContactService, useClass: MockContactService }, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+})
     .compileComponents();
   }));
 

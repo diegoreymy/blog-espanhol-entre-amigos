@@ -10,8 +10,9 @@ import { CounterComponent } from './components/counter/counter.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -19,7 +20,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
+    declarations: [
         HomeComponent,
         BannerComponent,
         AboutEspanholEntreAmigosComponent,
@@ -27,15 +28,12 @@ describe('HomeComponent', () => {
         CounterComponent,
         ContactComponent,
         ReviewsComponent
-      ],
-      imports: [
-        RouterTestingModule,
-        HttpClientTestingModule,
-        ReactiveFormsModule
-      ],
-      providers: [BlogService],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [RouterTestingModule,
+        ReactiveFormsModule],
+    providers: [BlogService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+})
     .compileComponents();
   }));
 

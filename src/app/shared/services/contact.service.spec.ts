@@ -1,7 +1,8 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 
 import { ContactService } from './contact.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 const responseContactService = {email: 'diegoreymy@gmail.com', name: 'Diego', message: 'mensaje de prueba'};
 const requestContactService = {email: 'diegoreymy@gmail.com', name: 'Diego', message: 'mensaje de prueba'};
@@ -14,9 +15,9 @@ describe('ContactService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [ContactService],
-    });
+    imports: [],
+    providers: [ContactService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
 
     injector = getTestBed();
     service = injector.inject(ContactService);

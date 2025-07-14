@@ -1,8 +1,9 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { BlogService } from './blog.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { IPost } from '../models/IPost.model';
 import { environment } from 'src/environments/environment';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 const expectedPostDetails: IPost = {
   id: 37,
@@ -141,9 +142,9 @@ describe('BlogService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [BlogService],
-    });
+    imports: [],
+    providers: [BlogService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
 
     injector = getTestBed();
     service = injector.inject(BlogService);
