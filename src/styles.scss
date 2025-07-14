@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 
 // 2) Configuración de tipografía
-$custom-typography: mat.define-typography-config(
+$custom-typography: mat.m2-define-typography-config(
   $font-family: 'Raleway, sans-serif'
 );
 
@@ -46,12 +46,12 @@ $md-colorprimario: (
 );
 
 // 5) Crea los objetos de paleta
-$custom-primary: mat.define-palette($md-colorprimario);
-$custom-accent : mat.define-palette(mat.$amber-palette);
-$custom-warn   : mat.define-palette(mat.$red-palette);
+$custom-primary: mat.m2-define-palette($md-colorprimario);
+$custom-accent : mat.m2-define-palette(mat.$m2-amber-palette);
+$custom-warn   : mat.m2-define-palette(mat.$m2-red-palette);
 
 // 6) Define el tema LIGHT con mapa de configuración
-$custom-theme: mat.define-light-theme((
+$custom-theme: mat.m2-define-light-theme((
   color: (
     primary: $custom-primary,
     accent:  $custom-accent,
