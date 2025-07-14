@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { IPost } from '../../models/IPost.model';
 import { BlogService } from '../../services/blog.service';
 import { Meta } from '@angular/platform-browser';
-import { SwUpdate } from '@angular/service-worker';
+import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -39,7 +39,11 @@ export class BlogComponent implements OnInit {
   }
   
   updatePWA() {
-    this.swUpdate.available.subscribe(() => window.location.reload());
+    this.swUpdate.versionUpdates.subscribe(event => {
+      if (event.type === 'VERSION_READY') {
+        window.location.reload();
+      }
+    });
   }
 
 }

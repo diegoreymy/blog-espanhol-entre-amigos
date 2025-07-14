@@ -1,6 +1,6 @@
 import { Component, PLATFORM_ID, Inject, AfterViewInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { SwUpdate } from '@angular/service-worker';
+import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { filter } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
 import { isPlatformBrowser } from '@angular/common';
@@ -29,7 +29,11 @@ export class AppComponent implements AfterViewInit {
   }
 
   updatePWA() {
-    this.swUpdate.available.subscribe(() => window.location.reload());
+    this.swUpdate.versionUpdates.subscribe(event => {
+      if (event.type === 'VERSION_READY') {
+        window.location.reload();
+      }
+    });
   }
 
   setTitle(url: string): string {
