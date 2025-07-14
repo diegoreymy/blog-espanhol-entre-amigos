@@ -77,18 +77,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "espanhol-entre-amigos:build"
+            "buildTarget": "espanhol-entre-amigos:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "espanhol-entre-amigos:build:production"
+              "buildTarget": "espanhol-entre-amigos:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "espanhol-entre-amigos:build"
+            "buildTarget": "espanhol-entre-amigos:build"
           }
         },
         "test": {
@@ -149,7 +149,7 @@
           }
         },
         "serve-ssr": {
-          "builder": "@nguniversal/builders:ssr-dev-server",
+          "builder": "@angular-devkit/build-angular:ssr-dev-server",
           "options": {
             "browserTarget": "espanhol-entre-amigos:build",
             "serverTarget": "espanhol-entre-amigos:server"
@@ -162,7 +162,7 @@
           }
         },
         "prerender": {
-          "builder": "@nguniversal/builders:prerender",
+          "builder": "@angular-devkit/build-angular:prerender",
           "options": {
             "browserTarget": "espanhol-entre-amigos:build:production",
             "serverTarget": "espanhol-entre-amigos:server:production",
