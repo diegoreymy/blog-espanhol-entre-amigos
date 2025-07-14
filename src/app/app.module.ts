@@ -19,10 +19,10 @@ import { provideMessaging, getMessaging } from '@angular/fire/messaging';
         AppRoutingModule,
         BrowserAnimationsModule,
         SharedModule,
-        provideFirebaseApp(() => initializeApp(environment.firebase)),
-        provideMessaging(() => getMessaging()),
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })], providers: [
         Title,
-        provideHttpClient(withInterceptorsFromDi())
+        provideHttpClient(withInterceptorsFromDi()),
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideMessaging(() => getMessaging())
     ] })
 export class AppModule { }
