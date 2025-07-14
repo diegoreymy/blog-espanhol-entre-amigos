@@ -1,53 +1,76 @@
 @use '@angular/material' as mat;
 
-$custom-typography: mat.define-typography-config($font-family: Raleway);
-@include mat.core($custom-typography);
+// 1) (Opcional) Importa la fuente Raleway
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 
-$md-colorprimario: (
-    50 : #ecfbfc,
-    100 : #cef6f8,
-    200 : #aef0f3,
-    300 : #8eeaee,
-    400 : #75e6ea,
-    500 : #5de1e6,
-    600 : #55dde3,
-    700 : #4bd9df,
-    800 : #41d5db,
-    900 : #30cdd5,
-    A100 : #ffffff,
-    A200 : #e5feff,
-    A400 : #b3fbff,
-    A700 : #99faff,
-    contrast: (
-        50 : #000000,
-        100 : #000000,
-        200 : #000000,
-        300 : #000000,
-        400 : #000000,
-        500 : #000000,
-        600 : #000000,
-        700 : #000000,
-        800 : #000000,
-        900 : #000000,
-        A100 : #000000,
-        A200 : #000000,
-        A400 : #000000,
-        A700 : #000000,
-    )
+// 2) Configuración de tipografía
+$custom-typography: mat.define-typography-config(
+  $font-family: 'Raleway, sans-serif'
 );
 
+// 3) Inicializa los estilos base SIN pasar tipografía
+@include mat.core();
 
+// 4) Define tu paleta primaria
+$md-colorprimario: (
+  50   : #ecfbfc,
+  100  : #cef6f8,
+  200  : #aef0f3,
+  300  : #8eeaee,
+  400  : #75e6ea,
+  500  : #5de1e6,
+  600  : #55dde3,
+  700  : #4bd9df,
+  800  : #41d5db,
+  900  : #30cdd5,
+  A100 : #ffffff,
+  A200 : #e5feff,
+  A400 : #b3fbff,
+  A700 : #99faff,
+  contrast: (
+    50   : #000000,
+    100  : #000000,
+    200  : #000000,
+    300  : #000000,
+    400  : #000000,
+    500  : #000000,
+    600  : #000000,
+    700  : #000000,
+    800  : #000000,
+    900  : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+// 5) Crea los objetos de paleta
 $custom-primary: mat.define-palette($md-colorprimario);
-$custom-accent: mat.define-palette(mat.$amber-palette);
-$custom-theme: mat.define-light-theme($custom-primary, $custom-accent);
+$custom-accent : mat.define-palette(mat.$amber-palette);
+$custom-warn   : mat.define-palette(mat.$red-palette);
+
+// 6) Define el tema LIGHT con mapa de configuración
+$custom-theme: mat.define-light-theme((
+  color: (
+    primary: $custom-primary,
+    accent:  $custom-accent,
+    warn:    $custom-warn,
+  ),
+  typography: $custom-typography,
+  density:    0,
+));
+
+// 7) Aplica los estilos de todos los componentes
 @include mat.all-component-themes($custom-theme);
 
-html,
-body {
+// 8) Estilos globales
+html, body {
   height: 100%;
   font-family: Raleway, sans-serif;
   scroll-behavior: smooth;
 }
+
 body {
   margin: 0;
   &.not-scroll {
