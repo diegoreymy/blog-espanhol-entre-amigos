@@ -41,10 +41,10 @@
     "zone.js": "~0.13.3"
   },
   "devDependencies": {
-    "@angular-devkit/architect": "^0.1502.11",
+    "@angular-devkit/architect": "^0.1602.16",
     "@angular-devkit/build-angular": "^16.2.16",
     "@angular-eslint/schematics": "^20.1.1",
-    "@angular/cli": "^15.2.11",
+    "@angular/cli": "^16.2.16",
     "@angular/compiler-cli": "^16.2.12",
     "@angular/language-service": "^16.2.12",
     "@nguniversal/builders": "^16.2.0",
