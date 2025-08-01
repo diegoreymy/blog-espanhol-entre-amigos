@@ -1,7 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, DOCUMENT } from '@angular/core';
 import { faFacebook, faInstagram, faYoutube, faSpotify } from '@fortawesome/free-brands-svg-icons';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { DOCUMENT } from '@angular/common';
+
 
 @Component({
     selector: 'app-header',
