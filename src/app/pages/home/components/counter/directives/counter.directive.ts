@@ -1,7 +1,8 @@
 import { Directive, ElementRef, Input, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[appCounter]',
+    selector: '[appCounter]',
+    standalone: false
 })
 export class CounterDirective {
 

@@ -1,5 +1,5 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_ID } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +15,7 @@ import { provideMessaging, getMessaging } from '@angular/fire/messaging';
 @NgModule({ declarations: [
         AppComponent
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         SharedModule,
@@ -23,6 +23,7 @@ import { provideMessaging, getMessaging } from '@angular/fire/messaging';
         Title,
         provideHttpClient(withInterceptorsFromDi()),
         provideFirebaseApp(() => initializeApp(environment.firebase)),
-        provideMessaging(() => getMessaging())
+        provideMessaging(() => getMessaging()),
+        { provide: APP_ID, useValue: 'serverApp' }
     ] })
 export class AppModule { }

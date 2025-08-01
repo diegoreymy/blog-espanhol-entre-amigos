@@ -4,11 +4,15 @@
     "target": "ES2022",
     "useDefineForClassFields": false,
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [
+      "node"
+    ]
   },
   "files": [
     "src/main.ts",
-    "src/polyfills.ts"
+    "src/polyfills.ts",
+    "src/main.server.ts",
+    "src/server.ts"
   ],
   "include": [
     "src/**/*.d.ts"

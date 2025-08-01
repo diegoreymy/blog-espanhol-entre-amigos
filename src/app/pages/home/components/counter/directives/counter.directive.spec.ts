@@ -4,7 +4,8 @@ import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 @Component({
-  template: '<p appCounter="2500">2500+</p>'
+    template: '<p appCounter="2500">2500+</p>',
+    standalone: false
 })
 class TestComponent { }
 

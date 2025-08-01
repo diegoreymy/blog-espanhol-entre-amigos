@@ -4,9 +4,10 @@ import { Subject } from 'rxjs';
 import { ContactService, IEmailData } from 'src/app/shared/services/contact.service';
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+    selector: 'app-contact',
+    templateUrl: './contact.component.html',
+    styleUrls: ['./contact.component.scss'],
+    standalone: false
 })
 export class ContactComponent implements OnInit, OnDestroy {
 

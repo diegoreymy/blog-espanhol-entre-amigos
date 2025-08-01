@@ -3,9 +3,10 @@ import { IPost } from '../../models/IPost.model';
 import { IPostImages } from '../../models/IPostImages.model';
 
 @Component({
-  selector: 'app-post-card',
-  templateUrl: './post-card.component.html',
-  styleUrls: ['./post-card.component.scss']
+    selector: 'app-post-card',
+    templateUrl: './post-card.component.html',
+    styleUrls: ['./post-card.component.scss'],
+    standalone: false
 })
 export class PostCardComponent implements OnChanges {
 

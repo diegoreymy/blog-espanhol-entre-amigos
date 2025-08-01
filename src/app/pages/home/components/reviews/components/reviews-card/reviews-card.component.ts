@@ -4,9 +4,10 @@ import { faQuoteRight, faQuoteLeft, faStar } from '@fortawesome/free-solid-svg-i
 import { IReview } from '../../models/iReview.model';
 
 @Component({
-  selector: 'app-reviews-card',
-  templateUrl: './reviews-card.component.html',
-  styleUrls: ['./reviews-card.component.scss']
+    selector: 'app-reviews-card',
+    templateUrl: './reviews-card.component.html',
+    styleUrls: ['./reviews-card.component.scss'],
+    standalone: false
 })
 export class ReviewsCardComponent {
 

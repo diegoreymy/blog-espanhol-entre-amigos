@@ -7,10 +7,11 @@ import { Messaging, getToken, onMessage } from '@angular/fire/messaging';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
-  selector: 'app-post-detail',
-  templateUrl: './post-detail.component.html',
-  styleUrls: ['./post-detail.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+    selector: 'app-post-detail',
+    templateUrl: './post-detail.component.html',
+    styleUrls: ['./post-detail.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class PostDetailComponent implements OnInit, OnChanges {
 

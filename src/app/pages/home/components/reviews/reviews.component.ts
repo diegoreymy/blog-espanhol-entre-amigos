@@ -7,9 +7,10 @@ import { IReview } from './models/iReview.model';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
-  selector: 'app-reviews',
-  templateUrl: './reviews.component.html',
-  styleUrls: ['./reviews.component.scss']
+    selector: 'app-reviews',
+    templateUrl: './reviews.component.html',
+    styleUrls: ['./reviews.component.scss'],
+    standalone: false
 })
 export class ReviewsComponent implements OnInit, OnDestroy {
 

@@ -5,9 +5,10 @@ import { Subscription, fromEvent } from 'rxjs';
 import Utils from '../../utils';
 
 @Component({
-  selector: 'app-share-buttons',
-  templateUrl: './share-buttons.component.html',
-  styleUrls: ['./share-buttons.component.scss']
+    selector: 'app-share-buttons',
+    templateUrl: './share-buttons.component.html',
+    styleUrls: ['./share-buttons.component.scss'],
+    standalone: false
 })
 export class ShareButtonsComponent implements OnInit {
 
