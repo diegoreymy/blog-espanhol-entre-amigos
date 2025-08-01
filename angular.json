@@ -46,9 +46,9 @@
             ],
             "browser": "src/main.ts",
             "server": "src/main.server.ts",
-            "prerender": true,
+            "outputMode": "server",
             "ssr": {
-              "entry": "src/server.ts"
+              "entry": "src/main.server.ts"
             }
           },
           "configurations": {

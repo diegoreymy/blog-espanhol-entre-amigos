@@ -4,11 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "serve:ssr:espanhol-entre-amigos": "node dist/espanhol-entre-amigos/server/server.mjs"
+    "serve:ssr:espanhol-entre-amigos": "node dist/espanhol-entre-amigos/server/server.mjs",
+    "build": "ng build --configuration production",
+    "build:ssr": "ng build --configuration production --output-mode=server --ssr",
+    "vercel-build": "npm run build && npm run build:ssr"
   },
   "private": true,
   "dependencies": {
