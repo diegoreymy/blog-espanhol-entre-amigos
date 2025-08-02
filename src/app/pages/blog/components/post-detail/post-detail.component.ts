@@ -34,6 +34,10 @@ export class PostDetailComponent implements OnInit, OnChanges {
     if (isPlatformBrowser(this.platformId)) {
       this.getToken();
     }
+    if (this.post) {
+      this.imagesPost = JSON.parse(this.post.excerpt.rendered.split('<pre>')[1].replace('</pre>', '').trim());
+      this.updateMetas();
+    }
   }
 
   ngOnChanges() {

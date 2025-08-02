@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { BlogComponent } from './components/blog/blog.component';
 import { PostPageComponent } from './components/post-page/post-page.component';
+import { PostResolver } from './resolvers/post.resolver';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   },
   {
     path: ':slug',
-    component: PostPageComponent
+    component: PostPageComponent,
+    resolve: { post: PostResolver }
   }
 ];
 
