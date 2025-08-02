@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Meta } from '@angular/platform-browser';
 
 import { BlogRoutingModule } from './blog-routing.module';
 import { BlogComponent } from './components/blog/blog.component';
@@ -8,7 +9,7 @@ import { PostCardListComponent } from './components/post-card-list/post-card-lis
 import { BlogSidebarComponent } from './components/blog-sidebar/blog-sidebar.component';
 import { PostPageComponent } from './components/post-page/post-page.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
@@ -26,6 +27,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BlogRoutingModule,
     SharedModule,
     FontAwesomeModule,
-  ]
+  ],
+  providers: [Meta]
 })
 export class BlogModule { }

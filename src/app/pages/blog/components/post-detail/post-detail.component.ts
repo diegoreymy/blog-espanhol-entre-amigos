@@ -1,10 +1,12 @@
-import { Component, Input, ViewEncapsulation, OnChanges, OnInit, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, Input, ViewEncapsulation, OnChanges, OnInit, PLATFORM_ID, Inject, Renderer2 } from '@angular/core';
 import { faArrowLeft, faBell } from '@fortawesome/free-solid-svg-icons';
 import { IPost } from '../../models/IPost.model';
-import { Meta } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { IPostImages } from '../../models/IPostImages.model';
 import { Messaging, getToken, onMessage } from '@angular/fire/messaging';
 import { isPlatformBrowser } from '@angular/common';
+
+declare var document: Document;
 
 @Component({
     selector: 'app-post-detail',
@@ -19,11 +21,17 @@ export class PostDetailComponent implements OnInit, OnChanges {
   imagesPost: IPostImages;
   hasToken: boolean;
 
+  document: Document;
+
   constructor(
     private meta: Meta,
+    private titleService: Title,
     private messaging: Messaging,
-    @Inject(PLATFORM_ID) private platformId: any
-  ) { }
+    @Inject(PLATFORM_ID) private platformId: any,
+    private renderer: Renderer2
+  ) {
+    this.document = document;
+  }
 
   icons = {
     faArrowLeft,
@@ -43,38 +51,85 @@ export class PostDetailComponent implements OnInit, OnChanges {
     }
   }
 
-  updateMetas() {
-    const postUrl = `https://espanholentreamigos.com.br/blog/${this.post.slug}`;
-    const description = this.post.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 160);
-    const imageUrl = this.imagesPost?.facebook || this.post.jetpack_featured_media_url;
-    const title = this.post.title.rendered;
+  private createOrUpdateMetaTag(name: string, content: string, property?: string) {
+    let element: HTMLMetaElement;
     
-    // Standard meta tags
-    this.meta.updateTag({ name: 'description', content: description });
-    
-    // Open Graph / Facebook / LinkedIn
-    this.meta.updateTag({ property: 'og:type', content: 'article' });
-    this.meta.updateTag({ property: 'og:site_name', content: 'Español entre Amigos' });
-    this.meta.updateTag({ property: 'og:title', content: title });
-    this.meta.updateTag({ property: 'og:description', content: description });
-    this.meta.updateTag({ property: 'og:url', content: postUrl });
-    
-    // Only add image tags if we have an image
-    if (imageUrl) {
-      this.meta.updateTag({ property: 'og:image', content: imageUrl });
-      this.meta.updateTag({ property: 'og:image:width', content: '1200' });
-      this.meta.updateTag({ property: 'og:image:height', content: '630' });
-      this.meta.updateTag({ name: 'twitter:image', content: imageUrl });
+    if (property) {
+      element = this.document.querySelector(`meta[property="${property}"]`) || this.renderer.createElement('meta');
+      element.setAttribute('property', property);
+    } else {
+      element = this.document.querySelector(`meta[name="${name}"]`) || this.renderer.createElement('meta');
+      element.setAttribute('name', name);
     }
     
-    // Canonical URL
-    this.meta.updateTag({ rel: 'canonical', href: postUrl });
+    element.content = content;
+    this.renderer.appendChild(this.document.head, element);
+  }
+
+  private createOrUpdateLinkTag(rel: string, href: string) {
+    const existingElement = this.document.querySelector(`link[rel="${rel}"]`);
+    let element: HTMLLinkElement;
     
-    // Twitter Card
-    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
-    this.meta.updateTag({ name: 'twitter:title', content: title });
-    this.meta.updateTag({ name: 'twitter:description', content: description });
-    this.meta.updateTag({ name: 'twitter:domain', content: `https://espanholentreamigos.com.br/blog/${this.post.slug}` });
+    if (existingElement) {
+      element = existingElement as HTMLLinkElement;
+      element.setAttribute('href', href);
+    } else {
+      element = this.renderer.createElement('link') as HTMLLinkElement;
+      element.setAttribute('rel', rel);
+      element.setAttribute('href', href);
+      this.renderer.appendChild(this.document.head, element);
+    }
+  }
+
+  updateMetas() {
+    if (!this.post) return;
+    
+    try {
+      const postUrl = `https://espanholentreamigos.com.br/blog/${this.post.slug}`;
+      const description = this.post.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 160);
+      const imageUrl = this.imagesPost?.facebook || this.post.jetpack_featured_media_url;
+      const title = this.post.title.rendered;
+      
+      // Set page title
+      this.titleService.setTitle(`${title} | Español entre Amigos`);
+      
+      // Standard meta tags
+      this.createOrUpdateMetaTag('description', description);
+      
+      // Open Graph / Facebook / LinkedIn
+      this.createOrUpdateMetaTag('', 'article', 'og:type');
+      this.createOrUpdateMetaTag('', 'Español entre Amigos', 'og:site_name');
+      this.createOrUpdateMetaTag('', title, 'og:title');
+      this.createOrUpdateMetaTag('', description, 'og:description');
+      this.createOrUpdateMetaTag('', postUrl, 'og:url');
+      
+      // Only add image tags if we have an image
+      if (imageUrl) {
+        const fullImageUrl = imageUrl.startsWith('http') ? imageUrl : `https://espanholentreamigos.com.br${imageUrl}`;
+        this.createOrUpdateMetaTag('', fullImageUrl, 'og:image');
+        this.createOrUpdateMetaTag('', '1200', 'og:image:width');
+        this.createOrUpdateMetaTag('', '630', 'og:image:height');
+        this.createOrUpdateMetaTag('twitter:image', fullImageUrl);
+      }
+      
+      // Canonical URL
+      this.createOrUpdateLinkTag('canonical', postUrl);
+      
+      // Twitter Card
+      this.createOrUpdateMetaTag('twitter:card', 'summary_large_image');
+      this.createOrUpdateMetaTag('twitter:title', title);
+      this.createOrUpdateMetaTag('twitter:description', description);
+      this.createOrUpdateMetaTag('twitter:domain', 'espanholentreamigos.com.br');
+      this.createOrUpdateMetaTag('twitter:url', postUrl);
+      
+      // Additional meta tags for better sharing
+      this.createOrUpdateMetaTag('article:published_time', this.post.date);
+      this.createOrUpdateMetaTag('article:author', 'Marioly Guerrero');
+      this.createOrUpdateMetaTag('article:section', 'Blog');
+      
+    } catch (error) {
+      console.error('Error updating meta tags:', error);
+    }
   }
 
   requestPermissionNotifications() {
