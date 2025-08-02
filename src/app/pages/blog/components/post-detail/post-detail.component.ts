@@ -55,11 +55,6 @@ export class PostDetailComponent implements OnInit, OnChanges {
     this.meta.updateTag({ name: 'twitter:description', content: `Espanhol entre Amigos - ${this.post.title.rendered}` });
     this.meta.updateTag({ name: 'twitter:domain', content: `https://espanholentreamigos.com.br/blog/${this.post.slug}` });
     this.meta.updateTag({ name: 'twitter:card', content: `summary_large_image` });
-    this.meta.updateTag({ name: 'og:image', content: `${this.imagesPost.facebook}` });
-    this.meta.updateTag({ name: 'og:title', content: `Espanhol entre Amigos - ${this.post.title.rendered}` });
-    this.meta.updateTag({ name: 'og:url', content: `https://espanholentreamigos.com.br/blog/${this.post.slug}` });
-    this.meta.updateTag({ name: 'og:type', content: `website` });
-    this.meta.updateTag({ name: 'og:description', content: this.post.title.rendered });
   }
 
   requestPermissionNotifications() {
