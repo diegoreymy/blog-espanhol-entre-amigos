@@ -49,7 +49,9 @@ export class PostDetailComponent implements OnInit, OnChanges {
 
   updateMetas() {
     // Build a rich description (LinkedIn suggests >100 characters)
-    const rawHtml = this.post.excerpt?.rendered || this.post.content?.rendered || '';
+    // Exclude the <pre>…</pre> block that contains the JSON de imágenes para evitar que aparezca en la descripción
+    const htmlSource = this.post.excerpt?.rendered || this.post.content?.rendered || '';
+    const rawHtml = htmlSource.split('<pre>')[0];
     const text = rawHtml.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
     const description = text.slice(0, 160);
 
