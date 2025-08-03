@@ -1,0 +1,2 @@
+# Exclude the old TypeScript handler to avoid route conflict
+api/ssr.ts
