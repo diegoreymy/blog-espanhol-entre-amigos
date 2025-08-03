@@ -48,17 +48,35 @@ export class PostDetailComponent implements OnInit, OnChanges {
   }
 
   updateMetas() {
-    this.meta.updateTag({ name: 'description', content: this.post.title.rendered });
-    this.meta.updateTag({ property: 'og:image', content: `${this.imagesPost.facebook}` });
-    this.meta.updateTag({ property: 'og:title', content: `Espanhol entre Amigos - ${this.post.title.rendered}` });
-    this.meta.updateTag({ property: 'og:url', content: `https://espanholentreamigos.com.br/blog/${this.post.slug}` });
-    this.meta.updateTag({ property: 'og:type', content: `website` });
-    this.meta.updateTag({ property: 'og:description', content: this.post.title.rendered });
-    this.meta.updateTag({ name: 'twitter:title', content: `Espanhol entre Amigos - ${this.post.title.rendered}` });
-    this.meta.updateTag({ name: 'twitter:image', content: `${this.imagesPost.facebook}` });
-    this.meta.updateTag({ name: 'twitter:description', content: `Espanhol entre Amigos - ${this.post.title.rendered}` });
-    this.meta.updateTag({ name: 'twitter:domain', content: `https://espanholentreamigos.com.br/blog/${this.post.slug}` });
-    this.meta.updateTag({ name: 'twitter:card', content: `summary_large_image` });
+    // Build a rich description (LinkedIn suggests >100 characters)
+    const rawHtml = this.post.excerpt?.rendered || this.post.content?.rendered || '';
+    const text = rawHtml.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+    const description = text.slice(0, 160);
+
+    const url = `https://espanholentreamigos.com.br/blog/${this.post.slug}`;
+    const title = `Espanhol entre Amigos - ${this.post.title.rendered}`;
+
+    // Standard + Open Graph
+    this.meta.updateTag({ name: 'description', content: description });
+    this.meta.updateTag({ property: 'og:image', content: this.imagesPost.facebook });
+    this.meta.updateTag({ property: 'og:title', content: title });
+    this.meta.updateTag({ property: 'og:url', content: url });
+    this.meta.updateTag({ property: 'og:type', content: 'article' });
+    this.meta.updateTag({ property: 'og:description', content: description });
+
+    // Twitter
+    this.meta.updateTag({ name: 'twitter:title', content: title });
+    this.meta.updateTag({ name: 'twitter:image', content: this.imagesPost.facebook });
+    this.meta.updateTag({ name: 'twitter:description', content: description });
+    this.meta.updateTag({ name: 'twitter:domain', content: url });
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+
+    // Author & publish time (for LinkedIn / OpenGraph)
+    this.meta.updateTag({ name: 'author', content: 'Marioly Guerrero' });
+    this.meta.updateTag({ property: 'article:author', content: 'Marioly Guerrero' });
+    this.meta.updateTag({ property: 'article:published_time', content: this.post.date });
+  }
+
   }
 
   requestPermissionNotifications() {
