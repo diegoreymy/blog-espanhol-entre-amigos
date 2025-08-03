@@ -77,8 +77,6 @@ export class PostDetailComponent implements OnInit, OnChanges {
     this.meta.updateTag({ property: 'article:published_time', content: this.post.date });
   }
 
-  }
-
   requestPermissionNotifications() {
     // Nueva forma de obtener el token de notificaciones push
     Notification.requestPermission().then(permission => {
