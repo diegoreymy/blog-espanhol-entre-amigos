@@ -1,9 +1,17 @@
 {
   "buildCommand": "npm run vercel-build",
-  "outputDirectory": "dist",
+  "outputDirectory": "dist/espanhol-entre-amigos/browser",
   "rewrites": [
     {
-      "source": "(.*)",
+      "source": "/assets/(.*)",
+      "destination": "/assets/$1"
+    },
+    {
+      "source": "/favicon.ico",
+      "destination": "/favicon.ico"
+    },
+    {
+      "source": "/(.*)",
       "destination": "/api/ssr.mjs"
     }
   ]
