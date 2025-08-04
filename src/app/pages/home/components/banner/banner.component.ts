@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
     selector: 'app-banner',
@@ -6,4 +7,14 @@ import { Component } from '@angular/core';
     styleUrls: ['./banner.component.scss'],
     standalone: false
 })
-export class BannerComponent {}
+export class BannerComponent implements OnInit {
+  isMobile = false;
+
+  constructor(private breakpointObserver: BreakpointObserver) {}
+
+  ngOnInit() {
+    this.breakpointObserver.observe([Breakpoints.Handset]).subscribe(result => {
+      this.isMobile = result.matches;
+    });
+  }
+}
