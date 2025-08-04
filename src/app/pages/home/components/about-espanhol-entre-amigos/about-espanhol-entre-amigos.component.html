@@ -2,7 +2,7 @@
     <div class="image-container">
         <picture *ngIf="!showVideo">
   <source srcset="assets/images/home/youtube.webp" type="image/webp">
-  <img src="assets/images/home/youtube.jpg" (mouseenter)="showVideo = !showVideo" alt="Video de presentación de español entre amigos" width="600" height="338" loading="lazy">
+  <img src="assets/images/home/youtube.webp" (mouseenter)="showVideo = !showVideo" alt="Video de presentación de español entre amigos" width="600" height="338" loading="lazy" onerror="this.onerror=null;this.src='assets/images/home/youtube.jpg';">
 </picture>
         <iframe *ngIf="showVideo" src="https://www.youtube.com/embed/lWXMEy-Ee5A?origin=https://espanholentreamigos.com.br" title="Video de presentación de Español entre amigos" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
