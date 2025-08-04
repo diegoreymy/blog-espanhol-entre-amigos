@@ -73,7 +73,7 @@ export class ReviewsComponent implements OnInit, OnDestroy {
     // Debounce scroll event
     if (this.reviewsBox) {
       this.subscriptions.add(
-        fromEvent(this.reviewsBox, 'scroll').pipe(debounceTime(30)).subscribe((event: Event) => {
+        fromEvent(this.reviewsBox, 'scroll', { passive: true }).pipe(debounceTime(30)).subscribe((event: Event) => {
           this.onScroll(event);
         })
       );
