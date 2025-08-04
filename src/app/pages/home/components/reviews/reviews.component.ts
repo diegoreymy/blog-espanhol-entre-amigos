@@ -4,6 +4,7 @@ import { faAngleLeft, faAngleRight, faCircle as solidCircle } from '@fortawesome
 import { faCircle as regularCircle } from '@fortawesome/free-regular-svg-icons';
 import { ReviewsService } from './services/reviews.service';
 import { Observable, Subscription, fromEvent } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { IReview } from './models/iReview.model';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -47,59 +48,97 @@ export class ReviewsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      this.size = window.innerWidth;
-      this.subscriptions.add(fromEvent(window, 'resize').subscribe((event: Event) => {
-        this.getPageWidth(event);
+  if (isPlatformBrowser(this.platformId)) {
+    this.size = window.innerWidth;
+    // Debounce resize event
+    this.subscriptions.add(fromEvent(window, 'resize').pipe(debounceTime(50)).subscribe((event: Event) => {
+      this.getPageWidth(event);
+      this.setTotalPages();
+    }));
+    // Usar BreakpointObserver para detectar dispositivo
+    this.subscriptions.add(
+      this.breakpointObserver.observe([
+        Breakpoints.Handset
+      ]).subscribe(result => {
+        this.isHandset = result.matches;
         this.setTotalPages();
-      }));
-      // Usar BreakpointObserver para detectar dispositivo
+      })
+    );
+  }
+  this.subscriptions.add(this.reviewsService.getReviews().subscribe(reviews => {
+    this.reviews = reviews;
+    this.setTotalPages();
+    this.reviewsBox = this.element.nativeElement.querySelector('.app-reviews-list');
+    this.widthItem = this.reviewsBox.clientWidth;
+    // Debounce scroll event
+    if (this.reviewsBox) {
       this.subscriptions.add(
-        this.breakpointObserver.observe([
-          Breakpoints.Handset
-        ]).subscribe(result => {
-          this.isHandset = result.matches;
-          this.setTotalPages();
+        fromEvent(this.reviewsBox, 'scroll').pipe(debounceTime(30)).subscribe((event: Event) => {
+          this.onScroll(event);
         })
       );
     }
-    this.subscriptions.add(this.reviewsService.getReviews().subscribe(reviews => {
-      this.reviews = reviews;
-      this.setTotalPages();
-      this.reviewsBox = this.element.nativeElement.querySelector('.app-reviews-list');
-      this.widthItem = this.reviewsBox.clientWidth;
-    }));
-  }
+  }));
+}
 
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
   }
 
   nextPage() {
-    if (this.size > 986) {
-      if (this.actualItem < this.totalPages) { this.actualItem++; }
-    } else {
-      this.tempWhidthPage = Math.round(this.scrollLeft / this.widthItem) * this.widthItem;
-    }
-    this.actualItem === 1 ? this.tempWhidthPage = this.widthItem : this.tempWhidthPage += this.widthItem;
-    this.reviewsBox.scrollLeft = this.tempWhidthPage;
+  // Layout reads
+  const size = this.size;
+  const actualItem = this.actualItem;
+  const totalPages = this.totalPages;
+  const widthItem = this.widthItem;
+  let tempWhidthPage = this.tempWhidthPage;
+  let scrollLeft = this.scrollLeft;
+
+  if (size > 986) {
+    if (actualItem < totalPages) { this.actualItem++; }
+  } else {
+    tempWhidthPage = Math.round(scrollLeft / widthItem) * widthItem;
   }
+  this.actualItem === 1 ? tempWhidthPage = widthItem : tempWhidthPage += widthItem;
+  this.tempWhidthPage = tempWhidthPage;
+  // Layout write
+  requestAnimationFrame(() => {
+    if (this.reviewsBox) this.reviewsBox.scrollLeft = tempWhidthPage;
+  });
+}
 
   prevPage() {
-    if (this.size > 986) {
-      if (this.actualItem > 1) { this.actualItem--; }
-    } else {
-      this.tempWhidthPage = Math.round(this.scrollLeft / this.widthItem) * this.widthItem;
-    }
-    this.tempWhidthPage -= this.widthItem;
-    this.reviewsBox.scrollLeft = this.tempWhidthPage;
+  // Layout reads
+  const size = this.size;
+  const actualItem = this.actualItem;
+  const widthItem = this.widthItem;
+  let tempWhidthPage = this.tempWhidthPage;
+  let scrollLeft = this.scrollLeft;
+
+  if (size > 986) {
+    if (actualItem > 1) { this.actualItem--; }
+  } else {
+    tempWhidthPage = Math.round(scrollLeft / widthItem) * widthItem;
   }
+  tempWhidthPage -= widthItem;
+  this.tempWhidthPage = tempWhidthPage;
+  // Layout write
+  requestAnimationFrame(() => {
+    if (this.reviewsBox) this.reviewsBox.scrollLeft = tempWhidthPage;
+  });
+}
 
   goToPage(page: number) {
-    this.reviewsBox.scrollLeft =  this.widthItem * page;
-    this.actualItem = page + 1;
-    this.tempWhidthPage = this.widthItem * page;
-  }
+  // Layout reads
+  const widthItem = this.widthItem;
+  // Layout write
+  const scrollLeftValue = widthItem * page;
+  this.actualItem = page + 1;
+  this.tempWhidthPage = scrollLeftValue;
+  requestAnimationFrame(() => {
+    if (this.reviewsBox) this.reviewsBox.scrollLeft = scrollLeftValue;
+  });
+}
 
   getPageWidth(event) {
     this.size = event.target.innerWidth;
@@ -114,13 +153,18 @@ export class ReviewsComponent implements OnInit, OnDestroy {
   }
 
   onScroll(event: Event) {
-    this.cancelSeeMore();
-    if (this.size < 986) {
-      const target: any = event.target;
-      this.scrollLeft = target.scrollLeft;
-      this.actualItem = Math.round(this.scrollLeft / this.widthItem) + 1;
-    }
+  this.cancelSeeMore();
+  // Layout reads
+  const size = this.size;
+  const widthItem = this.widthItem;
+  if (size < 986) {
+    const target: any = event.target;
+    const scrollLeft = target.scrollLeft;
+    // All reads done, now update state
+    this.scrollLeft = scrollLeft;
+    this.actualItem = Math.round(scrollLeft / widthItem) + 1;
   }
+}
 
   cancelSeeMore() {
     const container = this.element.nativeElement.querySelector('p.see-more');
