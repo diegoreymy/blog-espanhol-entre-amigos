@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { faAngleLeft, faAngleRight, faCircle as solidCircle } from '@fortawesome/free-solid-svg-icons';
 import { faCircle as regularCircle } from '@fortawesome/free-regular-svg-icons';
 import { ReviewsService } from './services/reviews.service';
@@ -35,9 +36,12 @@ export class ReviewsComponent implements OnInit, OnDestroy {
     regularCircle
   };
 
+  isHandset = false;
+
   constructor(
     private element: ElementRef,
     private reviewsService: ReviewsService,
+    private breakpointObserver: BreakpointObserver,
     // tslint:disable-next-line: ban-types
     @Inject(PLATFORM_ID) private platformId: Object
   ) { }
@@ -49,6 +53,15 @@ export class ReviewsComponent implements OnInit, OnDestroy {
         this.getPageWidth(event);
         this.setTotalPages();
       }));
+      // Usar BreakpointObserver para detectar dispositivo
+      this.subscriptions.add(
+        this.breakpointObserver.observe([
+          Breakpoints.Handset
+        ]).subscribe(result => {
+          this.isHandset = result.matches;
+          this.setTotalPages();
+        })
+      );
     }
     this.subscriptions.add(this.reviewsService.getReviews().subscribe(reviews => {
       this.reviews = reviews;
