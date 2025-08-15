@@ -59,10 +59,26 @@ export class PostDetailComponent implements OnInit, OnChanges {
     const url = `https://espanholentreamigos.com.br/blog/${this.post.slug}`;
     const title = `Espanhol entre Amigos - ${this.post.title.rendered}`;
 
+    // Choose a safe, publicly accessible OG image
+    const fallbackImg = 'https://espanholentreamigos.com.br/assets/images/banner/banner-facebook.jpg';
+    let ogImage = this.imagesPost?.facebook || fallbackImg;
+    try {
+      const u = new URL(ogImage);
+      const isHttps = u.protocol === 'https:';
+      const isBlockedHost = /wordpress\.com$/i.test(u.hostname) || /files\.wordpress\.com$/i.test(u.hostname);
+      if (!isHttps || isBlockedHost) {
+        ogImage = fallbackImg;
+      }
+    } catch {
+      ogImage = fallbackImg;
+    }
+
     // Standard + Open Graph
     this.title.setTitle(title);
     this.meta.updateTag({ name: 'description', content: description });
-    this.meta.updateTag({ property: 'og:image', content: this.imagesPost.facebook });
+    this.meta.updateTag({ property: 'og:image', content: ogImage });
+    this.meta.updateTag({ property: 'og:image:secure_url', content: ogImage });
+    this.meta.updateTag({ property: 'og:image:alt', content: 'Imagen del artículo' });
     this.meta.updateTag({ property: 'og:title', content: title });
     this.meta.updateTag({ property: 'og:url', content: url });
     this.meta.updateTag({ property: 'og:type', content: 'article' });
