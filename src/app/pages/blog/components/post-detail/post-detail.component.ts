@@ -1,7 +1,7 @@
 import { Component, Input, ViewEncapsulation, OnChanges, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { faArrowLeft, faBell } from '@fortawesome/free-solid-svg-icons';
 import { IPost } from '../../models/IPost.model';
-import { Meta } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { IPostImages } from '../../models/IPostImages.model';
 import { Messaging, getToken, onMessage } from '@angular/fire/messaging';
 import { isPlatformBrowser } from '@angular/common';
@@ -21,6 +21,7 @@ export class PostDetailComponent implements OnInit, OnChanges {
 
   constructor(
     private meta: Meta,
+    private title: Title,
     private messaging: Messaging,
     @Inject(PLATFORM_ID) private platformId: any
   ) { }
@@ -59,12 +60,18 @@ export class PostDetailComponent implements OnInit, OnChanges {
     const title = `Espanhol entre Amigos - ${this.post.title.rendered}`;
 
     // Standard + Open Graph
+    this.title.setTitle(title);
     this.meta.updateTag({ name: 'description', content: description });
     this.meta.updateTag({ property: 'og:image', content: this.imagesPost.facebook });
     this.meta.updateTag({ property: 'og:title', content: title });
     this.meta.updateTag({ property: 'og:url', content: url });
     this.meta.updateTag({ property: 'og:type', content: 'article' });
     this.meta.updateTag({ property: 'og:description', content: description });
+    this.meta.updateTag({ property: 'og:site_name', content: 'Espanhol entre Amigos' });
+    this.meta.updateTag({ property: 'og:locale', content: 'es_ES' });
+    // Recommended by Facebook to help image detection
+    this.meta.updateTag({ property: 'og:image:width', content: '1200' });
+    this.meta.updateTag({ property: 'og:image:height', content: '630' });
 
     // Twitter
     this.meta.updateTag({ name: 'twitter:title', content: title });
