@@ -59,6 +59,19 @@ export class PostDetailComponent implements OnInit, OnChanges {
     const url = `https://espanholentreamigos.com.br/blog/${this.post.slug}`;
     const title = `Espanhol entre Amigos - ${this.post.title.rendered}`;
 
+    // Map WordPress.com image URL to proxied URL under our domain
+    const wpBase = 'https://espanholentreamigos596581947.wordpress.com/wp-content/uploads/';
+    const wpCdnBase = 'https://i0.wp.com/espanholentreamigos596581947.wordpress.com/wp-content/uploads/';
+    const proxyBase = 'https://espanholentreamigos.com.br/wp-content/uploads/';
+    const originalImage = this.imagesPost.facebook || '';
+    let mapped = originalImage.startsWith(wpBase)
+      ? originalImage.replace(wpBase, proxyBase)
+      : originalImage.startsWith(wpCdnBase)
+        ? originalImage.replace(wpCdnBase, proxyBase)
+        : originalImage;
+    // Ensure proper URL encoding (spaces, accents)
+    const image = mapped ? encodeURI(mapped) : mapped;
+
     // Set document title
     this.title.setTitle(title);
 
@@ -70,15 +83,15 @@ export class PostDetailComponent implements OnInit, OnChanges {
     this.meta.updateTag({ property: 'og:url', content: url });
     this.meta.updateTag({ property: 'og:site_name', content: 'Espanhol entre Amigos' });
     this.meta.updateTag({ property: 'og:locale', content: 'es_ES' });
-    this.meta.updateTag({ property: 'og:image', content: this.imagesPost.facebook });
-    this.meta.updateTag({ property: 'og:image:secure_url', content: this.imagesPost.facebook });
+    this.meta.updateTag({ property: 'og:image', content: image });
+    this.meta.updateTag({ property: 'og:image:secure_url', content: image });
     this.meta.updateTag({ property: 'og:image:alt', content: title });
 
     // Twitter
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: title });
     this.meta.updateTag({ name: 'twitter:description', content: description });
-    this.meta.updateTag({ name: 'twitter:image', content: this.imagesPost.facebook });
+    this.meta.updateTag({ name: 'twitter:image', content: image });
     this.meta.updateTag({ name: 'twitter:url', content: url });
     // Optional: set your Twitter @username when available
     // this.meta.updateTag({ name: 'twitter:site', content: '@your_account' });
