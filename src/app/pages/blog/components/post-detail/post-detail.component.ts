@@ -1,7 +1,7 @@
 import { Component, Input, ViewEncapsulation, OnChanges, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { faArrowLeft, faBell } from '@fortawesome/free-solid-svg-icons';
 import { IPost } from '../../models/IPost.model';
-import { Meta } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { IPostImages } from '../../models/IPostImages.model';
 import { Messaging, getToken, onMessage } from '@angular/fire/messaging';
 import { isPlatformBrowser } from '@angular/common';
@@ -21,6 +21,7 @@ export class PostDetailComponent implements OnInit, OnChanges {
 
   constructor(
     private meta: Meta,
+    private title: Title,
     private messaging: Messaging,
     @Inject(PLATFORM_ID) private platformId: any
   ) { }
@@ -58,20 +59,29 @@ export class PostDetailComponent implements OnInit, OnChanges {
     const url = `https://espanholentreamigos.com.br/blog/${this.post.slug}`;
     const title = `Espanhol entre Amigos - ${this.post.title.rendered}`;
 
+    // Set document title
+    this.title.setTitle(title);
+
     // Standard + Open Graph
     this.meta.updateTag({ name: 'description', content: description });
-    this.meta.updateTag({ property: 'og:image', content: this.imagesPost.facebook });
     this.meta.updateTag({ property: 'og:title', content: title });
-    this.meta.updateTag({ property: 'og:url', content: url });
-    this.meta.updateTag({ property: 'og:type', content: 'article' });
     this.meta.updateTag({ property: 'og:description', content: description });
+    this.meta.updateTag({ property: 'og:type', content: 'article' });
+    this.meta.updateTag({ property: 'og:url', content: url });
+    this.meta.updateTag({ property: 'og:site_name', content: 'Espanhol entre Amigos' });
+    this.meta.updateTag({ property: 'og:locale', content: 'es_ES' });
+    this.meta.updateTag({ property: 'og:image', content: this.imagesPost.facebook });
+    this.meta.updateTag({ property: 'og:image:secure_url', content: this.imagesPost.facebook });
+    this.meta.updateTag({ property: 'og:image:alt', content: title });
 
     // Twitter
-    this.meta.updateTag({ name: 'twitter:title', content: title });
-    this.meta.updateTag({ name: 'twitter:image', content: this.imagesPost.facebook });
-    this.meta.updateTag({ name: 'twitter:description', content: description });
-    this.meta.updateTag({ name: 'twitter:domain', content: url });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.meta.updateTag({ name: 'twitter:title', content: title });
+    this.meta.updateTag({ name: 'twitter:description', content: description });
+    this.meta.updateTag({ name: 'twitter:image', content: this.imagesPost.facebook });
+    this.meta.updateTag({ name: 'twitter:url', content: url });
+    // Optional: set your Twitter @username when available
+    // this.meta.updateTag({ name: 'twitter:site', content: '@your_account' });
 
     // Author & publish time (for LinkedIn / OpenGraph)
     this.meta.updateTag({ name: 'author', content: 'Marioly Guerrero' });
