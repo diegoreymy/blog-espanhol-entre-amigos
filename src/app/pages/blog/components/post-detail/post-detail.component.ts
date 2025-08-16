@@ -1,10 +1,10 @@
 import { Component, Input, ViewEncapsulation, OnChanges, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { faArrowLeft, faBell } from '@fortawesome/free-solid-svg-icons';
 import { IPost } from '../../models/IPost.model';
-import { Meta, Title } from '@angular/platform-browser';
+import { Meta, Title, DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { IPostImages } from '../../models/IPostImages.model';
 import { Messaging, getToken, onMessage } from '@angular/fire/messaging';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, DOCUMENT } from '@angular/common';
 
 @Component({
     selector: 'app-post-detail',
@@ -18,12 +18,17 @@ export class PostDetailComponent implements OnInit, OnChanges {
   @Input() post: IPost;
   imagesPost: IPostImages;
   hasToken: boolean;
+  featuredImage: string = '';
+  contentHtml: SafeHtml | '' = '';
+  mobileImage: string = '';
 
   constructor(
     private meta: Meta,
     private title: Title,
+    private sanitizer: DomSanitizer,
     private messaging: Messaging,
-    @Inject(PLATFORM_ID) private platformId: any
+    @Inject(PLATFORM_ID) private platformId: any,
+    @Inject(DOCUMENT) private doc: Document
   ) { }
 
   icons = {
@@ -37,6 +42,9 @@ export class PostDetailComponent implements OnInit, OnChanges {
     }
     if (this.post) {
       this.imagesPost = JSON.parse(this.post.excerpt.rendered.split('<pre>')[1].replace('</pre>', '').trim());
+      this.featuredImage = this.mapImageUrl(this.post.jetpack_featured_media_url);
+      this.mobileImage = this.imagesPost?.cuadrito ? this.mapImageUrl(this.imagesPost.cuadrito) : '';
+      this.contentHtml = this.sanitizer.bypassSecurityTrustHtml(this.mapContentHtml(this.post.content?.rendered || ''));
       this.updateMetas();
     }
   }
@@ -44,6 +52,8 @@ export class PostDetailComponent implements OnInit, OnChanges {
   ngOnChanges() {
     if (this.post) {
       this.imagesPost = JSON.parse(this.post.excerpt.rendered.split('<pre>')[1].replace('</pre>', '').trim());
+      this.featuredImage = this.mapImageUrl(this.post.jetpack_featured_media_url);
+      this.contentHtml = this.sanitizer.bypassSecurityTrustHtml(this.mapContentHtml(this.post.content?.rendered || ''));
       this.updateMetas();
     }
   }
@@ -100,6 +110,63 @@ export class PostDetailComponent implements OnInit, OnChanges {
     this.meta.updateTag({ name: 'author', content: 'Marioly Guerrero' });
     this.meta.updateTag({ property: 'article:author', content: 'Marioly Guerrero' });
     this.meta.updateTag({ property: 'article:published_time', content: this.post.date });
+    if ((this.post as any)?.modified) {
+      this.meta.updateTag({ property: 'article:modified_time', content: (this.post as any).modified });
+    }
+
+    // Canonical link
+    this.setCanonical(url);
+  }
+
+  private mapImageUrl(originalUrl: string): string {
+    if (!originalUrl) return '';
+    const wpBase = 'https://espanholentreamigos596581947.wordpress.com/wp-content/uploads/';
+    const wpCdnBase = 'https://i0.wp.com/espanholentreamigos596581947.wordpress.com/wp-content/uploads/';
+    const proxyBase = 'https://espanholentreamigos.com.br/wp-content/uploads/';
+    let mapped = originalUrl.startsWith(wpBase)
+      ? originalUrl.replace(wpBase, proxyBase)
+      : originalUrl.startsWith(wpCdnBase)
+        ? originalUrl.replace(wpCdnBase, proxyBase)
+        : originalUrl;
+    return mapped ? encodeURI(mapped) : mapped;
+  }
+
+  private mapContentHtml(html: string): string {
+    if (!html) return '';
+    // Reemplaza src/href que apunten a wordpress.com o i0.wp.com por el dominio propio
+    const patterns = [
+      /https:\/\/espanholentreamigos596581947\.wordpress\.com\/wp-content\/uploads\//g,
+      /https:\/\/i0\.wp\.com\/espanholentreamigos596581947\.wordpress\.com\/wp-content\/uploads\//g
+    ];
+    const proxyBase = 'https://espanholentreamigos.com.br/wp-content/uploads/';
+    let output = html;
+    for (const p of patterns) {
+      output = output.replace(p, proxyBase);
+    }
+    // encodeURI solo dentro de atributos src/href si hay espacios
+    output = output.replace(/(src|href)=("|')([^"']+)(\2)/g, (_m, attr, q, url, q2) => {
+      try {
+        // Solo encodea si apunta a nuestro dominio de uploads
+        if (url.startsWith(proxyBase)) {
+          return `${attr}=${q}${encodeURI(url)}${q2}`;
+        }
+      } catch {}
+      return `${attr}=${q}${url}${q2}`;
+    });
+    return output;
+  }
+
+  private setCanonical(url: string) {
+    if (!this.doc) return;
+    const head = this.doc.head || this.doc.getElementsByTagName('head')[0];
+    if (!head) return;
+    let link: HTMLLinkElement | null = head.querySelector('link[rel="canonical"]');
+    if (!link) {
+      link = this.doc.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      head.appendChild(link);
+    }
+    link.setAttribute('href', url);
   }
 
   requestPermissionNotifications() {

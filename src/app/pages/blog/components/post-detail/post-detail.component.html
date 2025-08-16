@@ -4,8 +4,8 @@
 </a>
 <div class="post" *ngIf="post">
     <div class="post-img">
-        <img [src]="post.jetpack_featured_media_url" alt="Post" class="img-desktop" />
-        <img [src]="imagesPost.cuadrito" alt="Post" class="img-mobile" />
+        <img [src]="featuredImage" alt="Post" class="img-desktop" />
+        <img [src]="mobileImage || imagesPost.cuadrito" alt="Post" class="img-mobile" />
     </div>
     <div class="post-title">
         <h1 [innerHTML]="post.title.rendered"></h1>
@@ -16,12 +16,12 @@
     <div class="permission-notification" *ngIf="!hasToken"> 
         <strong>Activa las notificaciones para que no te piedas futuras publicaciones! </strong><button class="btn-notification" (click)="onClickGetNotification()" aria-label="activar notificaciones"><fa-icon [icon]="icons.faBell" class="icon"></fa-icon></button>
     </div>
-    <div class="post-text" [innerHTML]="post.content.rendered"></div>
+    <div class="post-text" [innerHTML]="contentHtml"></div>
     <p class="assign-text"><img src="assets/images/marca/firma.png" alt="Firma Marioly Guerrero"></p>
     <div class="post-social-share-buttons">
         <p>Si te gustó este artículo, compártelo! </p>
         <app-share-buttons [url]="'https://espanholentreamigos.com.br/blog/' + post.slug"
-            [title]="'Titulo del post'" [description]="post.title" [image]="post.jetpack_featured_media_url" *ngIf="post">
+            [title]="'Titulo del post'" [description]="post.title" [image]="featuredImage" *ngIf="post">
         </app-share-buttons>
     </div>
 </div>
