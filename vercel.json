@@ -3,6 +3,10 @@
   "outputDirectory": "dist/espanhol-entre-amigos/browser",
   "rewrites": [
     {
+      "source": "/wp-content/uploads/(.*)",
+      "destination": "https://espanholentreamigos596581947.wordpress.com/wp-content/uploads/$1"
+    },
+    {
       "source": "/assets/(.*)",
       "destination": "/assets/$1"
     },
@@ -13,6 +17,14 @@
     {
       "source": "/(.*)",
       "destination": "/api/ssr.mjs"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/wp-content/uploads/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
     }
   ]
 }

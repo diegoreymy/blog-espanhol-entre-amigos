@@ -26,8 +26,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
       {property: 'og:image', content: `https://espanholentreamigos.com.br/assets/images/banner/banner-facebook.jpg`},
       {property: 'og:title', content: `Espanhol entre Amigos`},
       {property: 'og:url', content: `https://espanholentreamigos.com.br/`},
-      {property: 'og:type', content: `website`},
+      {property: 'og:type', content: `article`},
       {property: 'og:description', content: 'Site relacionado ao ensino de espanhol para brasileiros'},
+      {property: 'og:image:width', content: '1200'},
+      {property: 'og:image:height', content: '630'},
     ]);
   }
 
