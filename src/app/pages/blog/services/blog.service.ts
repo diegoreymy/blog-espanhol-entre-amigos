@@ -14,7 +14,7 @@ export class BlogService {
   constructor(private http: HttpClient) { }
 
   public getPosts(): Observable<IPost[]> {
-    return this.http.get<IPost[]>(`${this.API_URL}/posts`);
+    return this.http.get<IPost[]>(`${this.API_URL}/posts?per_page=15`);
   }
 
   public getPostDetails(id: string): Observable<IPost> {
